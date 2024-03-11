@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../img/17973908.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-image: url(../img/17973908.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    /*sombra*/
+    box-shadow: 1px 5px 26px -8px rgba(0,0,0,0.41);
+    -webkit-box-shadow: 1px 5px 26px -8px rgba(0,0,0,0.41);
+    -moz-box-shadow: 1px 5px 26px -8px rgba(0,0,0,0.41);
+    
+    z-index: 1;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Estilos para el tamaño y alineación de tu logo */
+}
+
+header img{
+    height: 60px;
+}
+
+.menu-icon{
+    padding-left: 20px;
+    line-height: 80px;
+    font-size: 30px;
+}
+
+
+/* Menu */
+#containerMenu{
+    position: absolute;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 500ms ease;
+    z-index: 1000;
+    display: none;
+}
+
+#contMenu{
+    width: 100%;
+    max-width: 300px;
+    background-color: #1c1c1c;
+    min-height: 100vh;
+    position: relative;
+    position: fixed;
+    transition: all 500ms ease;
+}
+
+#contMenu nav{
+    transform: translateY(15%);
+}
+
+#contMenu nav a{
+    display: block;
+    font-size: 25px;
+    font-weight: 300;
+    text-decoration: none;
+    padding: 20px;
+    color: #c7c7c7;
+    border-left: 5px solid transparent;
+    transition: all 500ms ease;
+}
+
+#contMenu nav a:hover{
+    border-left: 5px solid #c7c7c7;
+    background-color: #252525;
+}
+
+#contMenu #cerrar{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+
+/* Seccion Principal */
+.main-content {
+    background-color: rgba(255, 255, 255, 0.801);
+    margin-top: 80px;
+    min-height: 100vh;
+    z-index: 0;
+}
+
+#barra{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    color: #2196F3;
+    background-color: hsla(0, 0%, 80%, 0.706); 
+    margin-bottom: 20px;
+    padding: 5px 10px;
+}
+
+#barra h2{
+    grid-column: 1/2;
+    justify-self: left;
+    font-weight: 500;
+}
+
+#barra a{
+    grid-column: 2/3;
+    justify-self: right;
+    font-weight: 300;
+    text-decoration: none;
+    color: #2196F3;
+}
+
+
+
+/* Configuracion del elemento switch para encender/apagar */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+
+
+/* Footer */
+#footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: hsl(0, 0%, 80%); 
+    color: #2196F3;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    z-index: 1;
+}
+
+.language-selector {
+    display: flex;
+}
+
+.language-selector a {
+    text-decoration: none;
+    color: #333; /* Color de texto */
+    margin: 0 40px; /* Espacio entre los enlaces */
+    font-size: 16px; /* Tamaño del texto */
+}
