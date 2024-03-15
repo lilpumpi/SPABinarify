@@ -33,23 +33,29 @@ $view->setVariable("title", "View Switch");
 
                 <?php 
 
-                if (isset($_GET["public_id"])) { ?>
-                   
-                   <div class="suscribe" style="display: <?= $suscription !== NULL ? 'none' : 'block'; ?>">
-                        <form action="index.php?controller=suscriptions&amp;action=add" method="post">
-                            <input type="hidden" name="id" value="<?= $switch->getId(); ?>">
-                            <button type="submit" name="submit" class="btn-suscribe" id="btn-suscribe">Suscribirse</button>
-                        </form>
-                    </div>
+                if (isset($_GET["public_id"])){
 
-                    <div class="suscribe" style="display: <?= $suscription !== NULL ? 'block' : 'none'; ?>">
-                        <form action="index.php?controller=suscriptions&amp;action=delete" method="post">
-                            <input type="hidden" name="id" value="<?= $suscription->getId(); ?>">
-                            <button type="submit" name="submit" class="btn-suscribe" id="btn-unsuscribe">Desuscribirse</button>
-                        </form>
-                    </div>
+                    if($suscription == NULL){ ?>
+                        <!-- Sino esta suscrito (susription == NULL) mostrar boton de suscribirse -->
+                        <div class="suscribe">
+                            <form action="index.php?controller=suscriptions&amp;action=add" method="post">
+                                <input type="hidden" name="id" value="<?= $switch->getId(); ?>">
+                                <button type="submit" name="submit" class="btn-suscribe" id="btn-suscribe">Suscribirse</button>
+                            </form>
+                        </div>
 
+                    <?php } else { ?>
+                        <!-- Si esta suscrito (susription != NULL) mostrar boton de desuscribirse -->
+                        <div class="suscribe">
+                            <form action="index.php?controller=suscriptions&amp;action=delete" method="post">
+                                <input type="hidden" name="id" value="<?= $suscription->getId(); ?>">
+                                <button type="submit" name="submit" class="btn-suscribe" id="btn-unsuscribe">Desuscribirse</button>
+                            </form>
+                        </div>
+                        
+                    <?php } ?>
                 <?php
+
                 } else if (isset($_GET["private_id"])) { ?>
                     
                     <div class="cambiarEstado" style="display: <?= $switch->getStatus() ? 'block' : 'none'; ?>">

@@ -4,7 +4,8 @@ require_once(__DIR__."/../core/PDOConnection.php");
 
 require_once(__DIR__."/../model/User.php");
 require_once(__DIR__."/../model/Suscription.php");
-require_once(__DIR__."/../model/SwitchDevice.php");
+require_once(__DIR__."/../model/SwitchMapper.php");
+require_once(__DIR__."/../model/UserMapper.php");
 
 
 class SuscriptionMapper {
@@ -14,9 +15,11 @@ class SuscriptionMapper {
 	* @var PDO
 	*/
 	private $db;
+	private $switchMapper;
 
 	public function __construct() {
 		$this->db = PDOConnection::getInstance();
+		$this->switchMapper = new SwitchMapper();
 	}
 
 	/**
@@ -31,8 +34,8 @@ class SuscriptionMapper {
 		$suscriptions = array();
 
 		foreach ($suscriptions_db as $suscription) {
+			$switch = $this->switchMapper->findById($suscription["switch_id"]);
 			$user = new User($suscription["username"]);
-            $switch = new SwitchDevice($suscription["switch_id"]);
 			array_push($suscriptions, new Suscription($suscription["id"], $user, $switch));
 		}
 
@@ -54,10 +57,8 @@ class SuscriptionMapper {
 		$suscription = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		if($suscription != null) {
-			return new Suscription(
-			$suscription["id"],
-			new User($suscription["username"]),
-            new SwitchDevice($suscription["switch_id"]));
+			$switch = $this->switchMapper->findById($suscription["switch_id"]);
+			return new Suscription($suscription["id"],new User($suscription["username"]), $switch);
 		} else {
 			return NULL;
 		}
@@ -72,10 +73,8 @@ class SuscriptionMapper {
 		$suscription = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		if($suscription != null) {
-			return new Suscription(
-			$suscription["id"],
-			new User($suscription["username"]),
-            new SwitchDevice($suscription["switch_id"]));
+			$switch = $this->switchMapper->findById($suscription["switch_id"]);
+			return new Suscription($suscription["id"], new User($suscription["username"]), $switch);
 		} else {
 			return NULL;
 		}

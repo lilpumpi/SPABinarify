@@ -176,7 +176,7 @@ class SuscriptionsController extends BaseController {
 		// perform the redirection. More or less:
 		// header("Location: index.php?controller=posts&action=index")
 		// die();
-		$this->view->redirect("switchs", "dashboard");
+		$this->view->redirect("suscriptions", "index");
 
 	}
 

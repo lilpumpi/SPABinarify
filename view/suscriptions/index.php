@@ -30,7 +30,7 @@ $view->setVariable("title", "Suscriptions");
                 <div class="suscription-container">
                     <h3><?= $switch->getName(); ?></h3>
                     <p id="descripcion"><?= $switch->getDescription(); ?></p>
-                    <!-- <p id="owner"><?= $switch->getOwner()->getUsername(); ?></p> -->
+                    <p id="owner">Creado por: <?= $switch->getOwner()->getUsername(); ?></p>
                     <p id="time" class="time" style="display: <?= $switch->getStatus() ? 'block' : 'none'; ?>">Tiempo: <?= $switch->getAutoOffTime(); ?> min</p>
                     <p id="fecha" class="time" style="display: <?= $switch->getStatus() ? 'none' : 'block'; ?>">Ultima vez: <?= $switch->getLastTime(); ?></p>
 

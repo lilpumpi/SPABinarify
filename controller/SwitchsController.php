@@ -39,9 +39,11 @@ class SwitchsController extends BaseController {
 
 		// obtain the data from the database
 		$switches = $this->switchMapper->findAll($this->currentUser->getUsername());
+		$suscriptions = $this->suscriptionMapper->findAll($this->currentUser->getUsername());
 
 		// put the array containing Post object to the view
 		$this->view->setVariable("switchs", $switches);
+		$this->view->setVariable("suscriptions", $suscriptions);
 
 		// render the view (/view/switches/dashboard.php)
 		$this->view->render("switchs", "dashboard");
@@ -188,6 +190,11 @@ class SwitchsController extends BaseController {
 			throw new Exception("no such switch with id: ".$switchId);
 		}
 
+		//This switch is mine??
+		if ($switch->getOWner()->getUsername() != $this->currentUser) {
+			throw new Exception("this switch is not yours: ".$switchId);
+		}
+
 		// Check if the Switch author is the currentUser (in Session)
 		if ($switch->getOwner() != $this->currentUser) {
 			throw new Exception("Swith author is not the logged user");
@@ -232,6 +239,11 @@ class SwitchsController extends BaseController {
 		// Does the post exist?
 		if ($switch == NULL) {
 			throw new Exception("no such switch with id: ".$switchId);
+		}
+
+		//This switch is mine??
+		if ($switch->getOWner()->getUsername() != $this->currentUser) {
+			throw new Exception("this switch is not yours: ".$switchId);
 		}
 
 		// Actualizar el estado del interruptor en la base de datos según el estado del formulario

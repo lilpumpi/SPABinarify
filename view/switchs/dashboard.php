@@ -5,6 +5,7 @@ require_once(__DIR__."/../../core/ViewManager.php");
 $view = ViewManager::getInstance();
 
 $switchs = $view->getVariable("switchs");
+$suscriptions = $view->getVariable("suscriptions");
 $errors = $view->getVariable("errors");
 $currentuser = $view->getVariable("currentusername");
 
@@ -55,7 +56,7 @@ $view->setVariable("title", "Dashboard");
                 <div id="mensaje">No hay switches</div>
             <?php
             }
-        ?>
+            ?>
 
     </div> 
 
@@ -68,7 +69,36 @@ $view->setVariable("title", "Dashboard");
     <!-- Aqui se mostraran las suscripciones de forma dinamica -->
     <div id="suscripciones">
 
-     <p>lista de suscripciones</p>   
+        <?php 
+        if (!empty($suscriptions)) {
+            foreach ($suscriptions as $suscription): 
+        ?>
+                            
+            <div class="suscripcion-container">
+                <h3><?= $suscription->getSwitch()->getName(); ?></h3>
+                <p id="propietario"><?= $suscription->getUser()->getUsername(); ?></p>
+                
+                <?php
+                    if($suscription->getSwitch()->getStatus()){ ?>
+
+                        <p id="encendido" class="estado">Encendido</p>
+
+                    <?php } else { ?>
+
+                        <p id="apagado" class="estado">Apagado</p>
+
+                    <?php } ?>
+                
+            </div>
+
+        <?php 
+            endforeach; 
+        } else {
+        ?>
+            <div id="mensaje">No hay suscripciones</div>
+        <?php
+        }
+        ?>  
 
     </div> 
 
