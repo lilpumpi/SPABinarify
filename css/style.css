@@ -286,7 +286,7 @@ label {
     color: #333;
 }
 
-input[type="number"] {
+input[id="timeModal"] {
     width: calc(100% - 20px);
     padding: 8px;
     border-radius: 5px;

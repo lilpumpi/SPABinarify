@@ -36,7 +36,7 @@ $view->setVariable("title", "Add Switch");
             
             <div id="botones">
                 <button type="submit" name="submit" id="crear"><?= i18n("Create") ?></button>
-                <button id="cancelar"><?= i18n("Cancel") ?></button>
+                <button type="button" id="cancelar"><a href="index.php?controller=switchs&amp;action=dashboard"><?= i18n("Cancel") ?></a></button>
             </div>
         </form>
     </div>

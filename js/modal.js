@@ -14,8 +14,8 @@ function openModal(switchId, page) {
             <div class="modal-body">
                 <form action="index.php?controller=switchs&amp;action=changeStatus&amp;status=true&amp;redirect=${page}" method="post" id="time-form">
                     <input type="hidden" id="switchId" name="id" value="${switchId}">
-                    <label for="time" name="tiempo">Tiempo (minutos):</label>
-                    <input type="number" id="time" name="timeOff" required>
+                    <label for="timeModal" name="tiempo">Tiempo (minutos):</label>
+                    <input type="number" id="timeModal" name="timeOff" required>
                     <button type="submit">Confirmar</button>
                 </form>
             </div>
