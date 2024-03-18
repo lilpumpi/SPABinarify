@@ -14,29 +14,29 @@ $view->setVariable("title", "Add Switch");
 
 <div id="form-container">
     <div id="barra">
-        <h3>Crear Switch</h3>
+        <h3><?= i18n("Create Switch") ?></h3>
     </div>
 
     <div id="formulario">
         <form action="index.php?controller=switchs&amp;action=add" method="POST"> 
             <div id="cont-name" class="input">
-                <label for="name">Nombre: </label>
+                <label for="name"><?= i18n("Name") ?>: </label>
                 <input type="text" name="name" id="nombre" placeholder="<?= i18n("Nombre") ?>" required>
             </div>
 
             <div id="cont-desc" class="input">
-                <label for="description">Descripcion: </label>
+                <label for="description"><?= i18n("Description") ?>: </label>
                 <textarea name="description" id="description" cols="70" rows="10" maxlength="400" placeholder="<?= i18n("Descripcion") ?>" required></textarea>
             </div>
 
             <div id="cont-time" class="input">
-                <label for="time">Tiempo: </label>
-                <input type="number" name="auto_off_time" id="time" placeholder="<?= i18n("Tiempo (min)") ?>" required>
+                <label for="time"><?= i18n("Time") ?>: </label>
+                <input type="number" name="auto_off_time" id="time" placeholder="<?= i18n("Time") ?> (min)" required>
             </div>
             
             <div id="botones">
-                <button type="submit" name="submit" id="crear">Crear</button>
-                <button id="cancelar">Cancelar</button>
+                <button type="submit" name="submit" id="crear"><?= i18n("Create") ?></button>
+                <button id="cancelar"><?= i18n("Cancel") ?></button>
             </div>
         </form>
     </div>

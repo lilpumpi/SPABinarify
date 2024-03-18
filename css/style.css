@@ -216,7 +216,7 @@ input:checked + .slider:before {
     left: 0;
     right: 0;
     height: 50px;
-    background-color: hsl(0, 0%, 80%); 
+    background-color: hsla(199, 100%, 91%, 0.952); 
     color: #2196F3;
 
 
@@ -236,4 +236,73 @@ input:checked + .slider:before {
     color: #333; /* Color de texto */
     margin: 0 40px; /* Espacio entre los enlaces */
     font-size: 16px; /* Tamaño del texto */
+}
+
+
+
+/* Estilos para la modal */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-header {
+    padding: 15px;
+    background-color: #2196F3;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #ffffff;
+    background-color: #2196F3;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.close-button {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.close-button:hover {
+    color: #ccc;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.modal-body button {
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0e83cd;
 }

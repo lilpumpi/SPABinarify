@@ -16,7 +16,7 @@ $errors = $view->getVariable("errors");
     <form action="index.php?controller=users&amp;action=login" method="POST">
         <input type="text" name="username" placeholder="<?= i18n("Username")?>" required>
         <input type="password" name="passwd" placeholder="<?= i18n("Password")?>" required>
-        <input type="submit" value="<?= i18n("Login") ?>">
+        <input type="submit" value="<?= i18n("Log in") ?>">
     </form>
 
     <div id="enlace">

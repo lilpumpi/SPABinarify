@@ -77,3 +77,32 @@ a:hover{
 #boton{
     margin-top: 100px;
 }
+
+
+/* Footer */
+#footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px; 
+    color: #2196F3;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    z-index: 1;
+}
+
+.language-selector {
+    display: flex;
+}
+
+.language-selector a {
+    text-decoration: none;
+    color: #2196F3; /* Color de texto */
+    margin: 0 40px; /* Espacio entre los enlaces */
+    font-size: 16px; /* Tamaño del texto */
+}

@@ -32,32 +32,29 @@ $view->setVariable("title", "Switchs");
                 <div class="switch-container">
                     <h3><?= $switch->getName(); ?></h3>
                     <p id="descripcion"><?= $switch->getDescription(); ?></p>
-                    <p id="time" class="time" style="display: <?= $switch->getStatus() ? 'block' : 'none'; ?>">Tiempo: <?= $switch->getAutoOffTime(); ?> min</p>
-                    <p id="fecha" class="time" style="display: <?= $switch->getStatus() ? 'none' : 'block'; ?>">Ultima vez: <?= $switch->getLastTime(); ?></p>
+                    <p id="time" class="time" style="display: <?= $switch->getStatus() ? 'block' : 'none'; ?>"><?= i18n("Time") ?>: <?= $switch->getAutoOffTime(); ?> min</p>
+                    <p id="fecha" class="time" style="display: <?= $switch->getStatus() ? 'none' : 'block'; ?>"><?= i18n("Last time") ?>: <?= $switch->getLastTime(); ?></p>
 
                     <div class="uris">
-                        <p id="privada">URI Privada: <a href="index.php?controller=switchs&action=view&private_id=<?= $switch->getPrivateId(); ?>">http://localhost/mvcbinarify/index.php?controller=switchs&action=view&private_id=<?= $switch->getPrivateId(); ?></a></p>
-                        <p id="publica">URI Publica: <a href="index.php?controller=switchs&action=view&public_id=<?= $switch->getPublicId(); ?>">http://localhost/mvcbinarify/index.php?controller=switchs&action=view&public_id=<?= $switch->getPublicId(); ?></a></p>
+                        <p id="privada"><?= i18n("Private URI") ?>: <a href="index.php?controller=switchs&action=view&private_id=<?= $switch->getPrivateId(); ?>">http://localhost/mvcbinarify/index.php?controller=switchs&action=view&private_id=<?= $switch->getPrivateId(); ?></a></p>
+                        <p id="publica"><?= i18n("Public URI") ?>: <a href="index.php?controller=switchs&action=view&public_id=<?= $switch->getPublicId(); ?>">http://localhost/mvcbinarify/index.php?controller=switchs&action=view&public_id=<?= $switch->getPublicId(); ?></a></p>
                     </div>
 
                     <div class="cambiarEstado" style="display: <?= $switch->getStatus() ? 'block' : 'none'; ?>">
                         <form action="index.php?controller=switchs&amp;action=changeStatus&amp;status=false&amp;redirect=index" method="post">
                             <input type="hidden" name="id" value="<?= $switch->getId(); ?>">
-                            <button type="submit" class="btn-cambiarEstado" id="btn-apagar">Apagar</button>
+                            <button type="submit" class="btn-cambiarEstado" id="btn-apagar"><?= i18n("Turn off") ?></button>
                         </form>
                     </div>
 
                     <div class="cambiarEstado" style="display: <?= $switch->getStatus() ? 'none' : 'block'; ?>">
-                        <form action="index.php?controller=switchs&amp;action=changeStatus&amp;status=true&amp;redirect=index" method="post">
-                            <input type="hidden" name="id" value="<?= $switch->getId(); ?>">
-                            <button type="submit" class="btn-cambiarEstado" id="btn-encender">Encender</button>
-                        </form>
+                        <button type="button" class="btn-cambiarEstado" id="btn-encender" onclick="openModal(<?= $switch->getId(); ?>, 'index');"><?= i18n("Turn on") ?></button>
                     </div>
 
                     <div class="eliminar">
                         <form action="index.php?controller=switchs&amp;action=delete&amp;id=<?= $switch->getId(); ?>" method="post">
                             <input type="hidden" name="id" value="<?= $switch->getId(); ?>">
-                            <button type="submit" class="btn-eliminar" id="btn-eliminar">Eliminar</button>
+                            <button type="submit" class="btn-eliminar" id="btn-eliminar"><?= i18n("Delete") ?></button>
                         </form>
                     </div>
                 </div>
@@ -66,15 +63,16 @@ $view->setVariable("title", "Switchs");
                 endforeach; 
             } else {
             ?>
-                <div id="mensaje">No hay switches</div>
+                <div id="mensaje"><?= i18n("No switches") ?></div>
             <?php
             }
         ?>
 
 
-    </div>     
+    </div>    
 
-</div>
+
+    <div id="modal-container" class="modal-container"></div>
 
 <?php $view->moveToFragment("css");?>
     <link rel="stylesheet" href="css/switches.css" type="text/css">

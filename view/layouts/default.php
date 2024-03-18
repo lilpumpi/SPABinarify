@@ -37,12 +37,11 @@ $currentuser = $view->getVariable("currentusername");
      <div id="containerMenu">
         <div id="contMenu">
             <nav>
-                <a href="./buscar.php">Buscar</a>
-                <a href="index.php?controller=switchs&amp;action=dashboard">Inicio</a>
+                <a href="index.php?controller=switchs&amp;action=dashboard"><?= i18n("Dashboard") ?></a>
                 <a href="index.php?controller=switchs&amp;action=index">Switches</a>
-                <a href="index.php?controller=suscriptions&amp;action=index">Suscripciones</a>
-                <a href="index.php?controller=switchs&amp;action=add">Crear</a>
-                <a href="index.php?controller=users&amp;action=logout">Cerrar Sesion</a>
+                <a href="index.php?controller=suscriptions&amp;action=index"><?= i18n("Suscriptions") ?></a>
+                <a href="index.php?controller=switchs&amp;action=add"><?= i18n("Create") ?></a>
+                <a href="index.php?controller=users&amp;action=logout"><?= i18n("Log out") ?></a>
             </nav>
             <i id="cerrar" class="fa-solid fa-xmark"></i>
         </div>
@@ -55,6 +54,8 @@ $currentuser = $view->getVariable("currentusername");
 			<?= $view->popFlash() ?>
 		</div>
 
+        
+
 		<?= $view->getFragment(ViewManager::DEFAULT_FRAGMENT) ?>
 
     </main>
@@ -66,6 +67,7 @@ $currentuser = $view->getVariable("currentusername");
 	</footer>
 
     <script src="/mvcbinarify/js/menu_desplegable.js"></script>
+    <script src="/mvcbinarify/js/modal.js"></script>
 
 </body>
 </html>

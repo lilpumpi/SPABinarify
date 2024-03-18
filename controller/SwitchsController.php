@@ -190,11 +190,6 @@ class SwitchsController extends BaseController {
 			throw new Exception("no such switch with id: ".$switchId);
 		}
 
-		//This switch is mine??
-		if ($switch->getOWner()->getUsername() != $this->currentUser) {
-			throw new Exception("this switch is not yours: ".$switchId);
-		}
-
 		// Check if the Switch author is the currentUser (in Session)
 		if ($switch->getOwner() != $this->currentUser) {
 			throw new Exception("Swith author is not the logged user");
@@ -228,9 +223,11 @@ class SwitchsController extends BaseController {
 			throw new Exception("id is mandatory");
 		}
 
+		$page = $_GET["redirect"];
+
 		// Obtener el ID del interruptor y el estado del formulario
 		$switchId = $_POST["id"];
-		$page = $_REQUEST['redirect']; //Pagina de la que se llamo la funcion para poder volver a la misma
+		$timeOff = $_POST["timeOff"];
 		$switchState = isset($_REQUEST['status']) && $_REQUEST['status'] === 'true' ? true : false;
 
 		// Obtener el interruptor de la base de datos
@@ -241,15 +238,23 @@ class SwitchsController extends BaseController {
 			throw new Exception("no such switch with id: ".$switchId);
 		}
 
-		//This switch is mine??
-		if ($switch->getOWner()->getUsername() != $this->currentUser) {
-			throw new Exception("this switch is not yours: ".$switchId);
+		// Check if the Switch author is the currentUser (in Session)
+		if ($switch->getOwner() != $this->currentUser) {
+			throw new Exception("Swith author is not the logged user");
 		}
 
 		// Actualizar el estado del interruptor en la base de datos según el estado del formulario
 		if ($switchState) {
+
+			// Time is valid??
+			if($timeOff <= 0){
+				throw new Exception("Time invalid");
+			} else if ($timeOff > 120) {
+				throw new Exception("Time max is 120 min");
+			}
+
 			//Se enciende el switch
-			$switch->setAutoOffTime(2);
+			$switch->setAutoOffTime($timeOff);
 			$switch->setLastTime(date('Y-m-d H:i:s'));
 
 		} else {

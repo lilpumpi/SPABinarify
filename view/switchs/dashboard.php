@@ -36,15 +36,12 @@ $view->setVariable("title", "Dashboard");
                     <div class="cambiarEstado" style="display: <?= $switch->getStatus() ? 'block' : 'none'; ?>">
                         <form action="index.php?controller=switchs&amp;action=changeStatus&amp;status=false&amp;redirect=dashboard" method="post">
                             <input type="hidden" name="id" value="<?= $switch->getId(); ?>">
-                            <button type="submit" class="btn-cambiarEstado" id="btn-apagar">Apagar</button>
+                            <button type="submit" class="btn-cambiarEstado" id="btn-apagar"><?= i18n("Turn off") ?></button>
                         </form>
                     </div>
 
                     <div class="cambiarEstado" style="display: <?= $switch->getStatus() ? 'none' : 'block'; ?>">
-                        <form action="index.php?controller=switchs&amp;action=changeStatus&amp;status=true&amp;redirect=dashboard" method="post">
-                            <input type="hidden" name="id" value="<?= $switch->getId(); ?>">
-                            <button type="submit" class="btn-cambiarEstado" id="btn-encender">Encender</button>
-                        </form>
+                        <button type="button" class="btn-cambiarEstado" id="btn-encender" onclick="openModal(<?= $switch->getId(); ?>, 'dashboard');"><?= i18n("Turn on") ?></button>
                     </div>
 
                 </div>
@@ -53,7 +50,7 @@ $view->setVariable("title", "Dashboard");
                 endforeach; 
             } else {
             ?>
-                <div id="mensaje">No hay switches</div>
+                <div id="mensaje"><?= i18n("No switches") ?></div>
             <?php
             }
             ?>
@@ -64,7 +61,7 @@ $view->setVariable("title", "Dashboard");
 
 <!-- Seccion donde se mostraran de forma muy generica los switches suscritos -->
 <div class="suscripciones">
-    <h2>Suscripciones</h2>
+    <h2><?= i18n("Subscriptions") ?></h2>
 
     <!-- Aqui se mostraran las suscripciones de forma dinamica -->
     <div id="suscripciones">
@@ -81,11 +78,11 @@ $view->setVariable("title", "Dashboard");
                 <?php
                     if($suscription->getSwitch()->getStatus()){ ?>
 
-                        <p id="encendido" class="estado">Encendido</p>
+                        <p id="encendido" class="estado"><?= i18n("Power on") ?></p>
 
                     <?php } else { ?>
 
-                        <p id="apagado" class="estado">Apagado</p>
+                        <p id="apagado" class="estado"><?= i18n("Power off") ?></p>
 
                     <?php } ?>
                 
@@ -95,12 +92,14 @@ $view->setVariable("title", "Dashboard");
             endforeach; 
         } else {
         ?>
-            <div id="mensaje">No hay suscripciones</div>
+            <div id="mensaje"><?= i18n("No subscriptions") ?></div>
         <?php
         }
         ?>  
 
     </div> 
+
+    <div id="modal-container" class="modal-container"></div>
 
     
 </div>
