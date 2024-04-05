@@ -65,6 +65,27 @@ class SuscriptionMapper {
 	}
 
 
+	//Devuelve las suscripciones de un switch
+	public function findSwitchSuscription($switchId) {
+		$stmt = $this->db->prepare("SELECT * FROM suscripciones WHERE switch_id = ?");
+		$stmt->execute(array($switchId));
+		$suscriptions_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		if($suscriptions_db != NULL){
+			$suscriptions = array();
+
+			foreach ($suscriptions_db as $suscription) {
+				$switch = $this->switchMapper->findById($suscription["switch_id"]);
+				$user = new User($suscription["username"]);
+				array_push($suscriptions, new Suscription($suscription["id"], $user, $switch));
+			}
+
+			return $suscriptions;
+		} else{
+			return NULL;
+		}
+	}
+
 
     //Ensure that username is suscribed to switch -> Return the suscription
     public function isSuscribed($username, $switch_id){

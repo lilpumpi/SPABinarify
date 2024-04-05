@@ -257,6 +257,8 @@ class SwitchsController extends BaseController {
 			$switch->setAutoOffTime($timeOff);
 			$switch->setLastTime(date('Y-m-d H:i:s'));
 
+			$this->sendMail($switchId, $switch->getOwner()->getUsername());
+
 		} else {
 			//Se apaga el switch
 			$switch->setAutoOffTime(0);
@@ -280,6 +282,30 @@ class SwitchsController extends BaseController {
 		$data[6] = chr(ord($data[6]) & 0x0f | 0x40); // Versión 4
 		$data[8] = chr(ord($data[8]) & 0x3f | 0x80); // Variant
 		return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+	}
+
+
+	//Funcion para enviar un mail a los suscriptores del switch 
+	function sendMail($switchId, $usuario){
+		$suscriptions = $this->suscriptionMapper->findSwitchSuscription($switchId);
+
+		if($suscriptions !== NULL){
+
+			foreach ($suscriptions as $suscription){
+				$userEmail = $suscription->getUser()->getEmail();
+
+				$subject = "Switch encendido";
+				$message = $usuario . " ha encendido el switch " . $switchId . "!! ";
+				$headers = "From: support@binairfy.com";
+
+				// Enviar el correo
+				if (mail($userEmail, $subject, $message, $headers)) {
+					echo "El correo se envió correctamente.";
+				} else {
+					echo "Hubo un error al enviar el correo.";
+				}
+			}
+		}
 	}
 
 }

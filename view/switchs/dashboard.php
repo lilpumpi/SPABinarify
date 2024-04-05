@@ -73,7 +73,7 @@ $view->setVariable("title", "Dashboard");
                             
             <div class="suscripcion-container">
                 <h3><?= $suscription->getSwitch()->getName(); ?></h3>
-                <p id="propietario"><?= $suscription->getUser()->getUsername(); ?></p>
+                <p id="propietario"><?= $suscription->getSwitch()->getOwner()->getUsername(); ?></p>
                 
                 <?php
                     if($suscription->getSwitch()->getStatus()){ ?>
