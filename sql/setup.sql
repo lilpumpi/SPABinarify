@@ -1,13 +1,13 @@
 /*Este archivo creará la base de datos de la aplicacion*/
 
 /*Eliminamos la base de datos si existe para evitar problemas a la hora de resetaear la base de datos*/
-DROP DATABASE IF EXISTS mvcbinarify;
+DROP DATABASE IF EXISTS binarify;
 
 /*Crearemos la base de datos de la aplicacion de Binarify, la cual tendrá 3 tablas, una para guardar los usuarios registrados en la app, otra para guardar
 todos los switches creados y otra para guardar las suscripciones que se realicen de un usuario a un switch*/
-CREATE DATABASE mvcbinarify;
+CREATE DATABASE binarify;
 
-USE mvcbinarify;
+USE binarify;
 
 /*Tabla de usuarios, con los atributos, la clave primaria será el nombre de ususario y la contraseña deberá ser un campo obligatorio*/
 CREATE TABLE usuarios(
@@ -44,5 +44,5 @@ CREATE TABLE suscripciones(
 
 
 /*Para crear la base de datos, primero crearemos un username para la misma, se hará la conexion en el archivo PHP, en concreto en /core/PDOConnection.php*/
-CREATE USER 'mvcuser'@'localhost' IDENTIFIED BY 'mvcblogpass';
-GRANT ALL PRIVILEGES ON mvcbinarify.* TO 'mvcuser'@'localhost' WITH GRANT OPTION;
+CREATE USER 'binarifyuser'@'localhost' IDENTIFIED BY 'binarifypass';
+GRANT ALL PRIVILEGES ON binarify.* TO 'binarifyuser'@'localhost' WITH GRANT OPTION;

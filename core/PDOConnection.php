@@ -3,9 +3,9 @@
 
 class PDOConnection {
 	private static $dbhost = "127.0.0.1";
-	private static $dbname = "mvcbinarify";
-	private static $dbuser = "mvcuser";
-	private static $dbpass = "mvcblogpass";
+	private static $dbname = "binarify";
+	private static $dbuser = "binarifyuser";
+	private static $dbpass = "binarifypass";
 	private static $db_singleton = null;
 
 	public static function getInstance() {
