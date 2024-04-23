@@ -44,5 +44,6 @@ CREATE TABLE suscripciones(
 
 
 /*Para crear la base de datos, primero crearemos un username para la misma, se hará la conexion en el archivo PHP, en concreto en /core/PDOConnection.php*/
+DROP USER IF EXISTS 'binarifyuser'@'localhost';
 CREATE USER 'binarifyuser'@'localhost' IDENTIFIED BY 'binarifypass';
 GRANT ALL PRIVILEGES ON binarify.* TO 'binarifyuser'@'localhost' WITH GRANT OPTION;
