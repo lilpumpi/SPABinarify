@@ -1,0 +1,15 @@
+<div>
+  <h2>{{selectedSwitch.nombre}}</h2>
+  <p>{{i18n 'Created by '}} {{selectedSwitch.owner}}</p>
+  <div>{{selectedSwitch.descripcion}}</div>
+
+  <div id="actions">
+    {{#if_eq user.currentUser selectedSwitch.owner}}
+      <!-- Mostrar botón si el usuario es el dueño del switch -->
+      <button id="encender">{{i18n 'Encender'}}</button>
+    {{else}}
+      <!-- Mostrar otro botón si el usuario no es el dueño del switch -->
+      <button id="suscribirse">{{i18n 'Suscribirse'}}</button>
+    {{/if_eq}}
+  </div>
+</div>

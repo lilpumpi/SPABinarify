@@ -1,0 +1,28 @@
+<div>
+<h1>{{i18n 'Switches'}}</h1>
+<div id="switchs-table">
+  {{#if switchs.length}}
+    <table border="1">
+      <thead>
+      <tr>
+        <th>{{i18n 'Name'}}</th>
+        <th>{{i18n 'Description'}}</th>
+        <th>{{i18n 'Owner'}}</th>
+        <th>{{i18n 'Auto_off_time'}}</th>
+        <th>{{i18n 'Last_time'}}</th>
+        <th>{{i18n 'Status'}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each switchs}}
+        <tr>Switch</tr>
+        <tr fronty-component="SwitchRowComponent" key="{{id}}" model="switchs[{{@index}}]" id="item-{{id}}"></tr>
+      {{/each}}
+    </tbody>
+    </table>
+  {{/if}}
+</div>
+{{#if user.isLogged}}
+  <a href='#add-switch'>{{i18n 'Create switch'}}</a>
+{{/if}}
+</div>
