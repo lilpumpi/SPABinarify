@@ -63,13 +63,12 @@ class SwitchRest extends BaseRest {
 		$currentUser = parent::authenticateUser();
 		$switch = new SwitchDevice();
 
-		if (isset($data->private_id) && isset($data->public_id) && isset($data->nombre) && isset($data->descripcion) && isset($data->auto_off_time) && isset($data->last_time)) {
+		if (isset($data->private_id) && isset($data->public_id) && isset($data->name) && isset($data->description) && isset($data->auto_off_time)) {
 			$switch->setPrivateId($data->private_id);
 			$switch->setPublicId($data->public_id);
-			$switch->setName($data->nombre);
-			$switch->setDescription($data->descripcion);
+			$switch->setName($data->name);
+			$switch->setDescription($data->description);
 			$switch->setAutoOffTime($data->auto_off_time);
-			$switch->setLastTime($data->last_time);
 			$switch->setOwner($currentUser);
 		}
 

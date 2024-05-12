@@ -1,0 +1,19 @@
+<tr key="{{id}}">
+  <td><a href="#view-switch?id={{id}}">{{name}}</a></td>
+  <td>{{description}}</td>
+  <td>{{owner}}</td>
+  <td>{{auto_off_time}}</td>
+  <td>{{last_time}}</td>
+  <td>
+    {{#if status}}
+      Encendido
+    {{else}}
+      Apagado
+    {{/if}}
+  </td>
+  <td>
+    {{#if_eq user.currentUser owner}}
+      <button class="remove-button" item="{{id}}">{{i18n 'remove'}}</button>
+    {{/if_eq}}
+  </td>
+</tr>
