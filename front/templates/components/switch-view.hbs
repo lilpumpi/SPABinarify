@@ -1,15 +1,44 @@
-<div>
-  <h2>{{selectedSwitch.nombre}}</h2>
-  <p>{{i18n 'Created by '}} {{selectedSwitch.owner}}</p>
-  <div>{{selectedSwitch.descripcion}}</div>
+<div class="switches">
+    <div id="barra">
+        <h2>{{i18n 'Switch Details'}}</h2>
+    </div>
 
-  <div id="actions">
-    {{#if_eq user.currentUser selectedSwitch.owner}}
-      <!-- Mostrar botón si el usuario es el dueño del switch -->
-      <button id="encender">{{i18n 'Encender'}}</button>
-    {{else}}
-      <!-- Mostrar otro botón si el usuario no es el dueño del switch -->
-      <button id="suscribirse">{{i18n 'Suscribirse'}}</button>
-    {{/if_eq}}
-  </div>
+    <!-- Mostramos el switch desde la base de datos -->
+    <div id="switches">
+
+        <div class="switch-container">
+            <h3>{{selectedSwitch.nombre}}</h3>
+            <p id="descripcion">{{selectedSwitch.descripcion}}</p>
+
+            <!-- Mostrar tiempo o ultima vez -->
+            {{#if selectedSwitch.status}}
+              <p id="time" class="time">{{i18n 'Time'}}: {{selectedSwitch.auto_off_time}} min</p>
+            {{else}}
+              <p id="fecha" class="time">{{i18n 'Last Time'}}: {{selectedSwitch.last_time}}</p>
+            {{/if}}
+
+            <p id="owner">{{i18n 'Created by '}}: {{selectedSwitch.owner}}</p>
+
+            <div id="boton">
+
+              {{#if_eq user.currentUser selectedSwitch.owner}}
+
+                <!-- Mostrar botón de encender o apagar si el usuario es el dueño del switch -->
+                {{#if selectedSwitch.status}}
+                  <button type="submit" class="btn-cambiarEstado" id="btn-apagar" item="{{selectedSwitch.id}}">{{i18n "Turn Off"}}</button>
+                {{else}}
+                  <button type="submit" class="btn-cambiarEstado" id="btn-encender" item="{{selectedSwitch.id}}">{{i18n "Turn On"}}</button>
+                {{/if}}
+
+              {{else}}
+                <!-- Mostrar botón de suscribirse o desuscribirse si el usuario NO el dueño del switch -->
+                <button id="suscribirse">{{i18n 'Suscribirse'}}</button>
+              {{/if_eq}}
+
+            </div>
+
+        </div>
+
+    </div>     
+
 </div>
