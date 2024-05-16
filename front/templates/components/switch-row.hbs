@@ -1,19 +1,26 @@
-<tr key="{{id}}">
-  <td><a href="#view-switch?id={{id}}">{{name}}</a></td>
-  <td>{{description}}</td>
-  <td>{{owner}}</td>
-  <td>{{auto_off_time}}</td>
-  <td>{{last_time}}</td>
-  <td>
-    {{#if status}}
-      Encendido
-    {{else}}
-      Apagado
-    {{/if}}
-  </td>
-  <td>
-    {{#if_eq user.currentUser owner}}
-      <button class="remove-button" item="{{id}}">{{i18n 'remove'}}</button>
-    {{/if_eq}}
-  </td>
-</tr>
+<div class="switch-container">
+  <h3>{{name}}</h3>
+  <p id="descripcion">{{description}}</p>
+
+  
+  {{#if status}}
+     <p id="time" class="time">{{auto_off_time}} min</p>
+  {{else}}
+      <p id="fecha" class="time">{{last_time}}</p>
+  {{/if}}
+
+  <div class="uris">
+      <p id="privada">{{i18n "Private URI"}}: <a href="#view-switch?id={{id}}">{{private_id}}</a></p>
+      <p id="publica">{{i18n "Public URI"}}: <a href="##view-switch?id={{id}}">{{public_id}}</a></p>
+  </div>
+
+  {{#if status}}
+    <button type="submit" class="btn-cambiarEstado" id="btn-apagar" item="{{id}}">{{i18n "Turn Off"}}</button>
+  {{else}}
+      <button type="submit" class="btn-cambiarEstado" id="btn-encender" item="{{id}}">{{i18n "Turn On"}}</button>
+  {{/if}}
+
+  <div class="eliminar">
+      <button type="submit" class="btn-eliminar" id="btn-eliminar" item="{{id}}">{{i18n "Delete"}}</button>
+  </div>
+</div>

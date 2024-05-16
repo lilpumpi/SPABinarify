@@ -53,8 +53,7 @@ class SwitchRowComponent extends Fronty.ModelComponent {
         this.router = router;
 
         //Se añadirá un event listener para eliminar el switch (depende del html)
-        this.addEventListener('click', '.remove-button', (event) => {
-        if (confirm(I18n.translate('Are you sure?'))) {
+        this.addEventListener('click', '.eliminar', (event) => {
             var switchId = event.target.getAttribute('item');
             this.switchsComponent.switchsService.deleteSwitch(switchId) //Enviamos peticion rest delete a traves de Switchsservice
             .fail(() => {
@@ -63,8 +62,55 @@ class SwitchRowComponent extends Fronty.ModelComponent {
             .always(() => {
                 this.switchsComponent.updateSwitchs(); //Una vez eliminado el switch, actualizamos la lista
             });
-        }
         });
+
+
+        //Se añadirá un event listener para encender el switch
+        this.addEventListener('click', '#btn-encender', (event) => {
+            //La peticion rest para actualizar un switch solo necesita el tiempo y la fecha
+            var newSwitch = {};
+            newSwitch.id = event.target.getAttribute('item');
+            newSwitch.auto_off_time = 10;
+            newSwitch.last_time = getFechaHoraActual();
+
+             //Enviamos peticion rest a update a traves de SwitchService
+            this.switchsComponent.switchsService.updateSwitch(newSwitch)
+            .fail(() => {
+                alert('switch cannot be turned on')
+            })
+            .always(() => {
+                this.switchsComponent.updateSwitchs(); //Una vez encendido el switch, actualizamos la lista
+            });
+        });
+
+
+        //Se añadirá un event listener para apagar el switch
+        this.addEventListener('click', '#btn-apagar', (event) => {
+            //La peticion rest para actualizar un switch solo necesita el tiempo y la fecha
+            var newSwitch = {};
+            newSwitch.id = event.target.getAttribute('item');
+            newSwitch.auto_off_time = 0;
+
+             //Enviamos peticion rest a update a traves de SwitchService
+            this.switchsComponent.switchsService.updateSwitch(newSwitch)
+            .fail(() => {
+                alert('switch cannot be turned off')
+            })
+            .always(() => {
+                this.switchsComponent.updateSwitchs(); //Una vez apagado el switch, actualizamos la lista
+            });
+        });
+
+        function getFechaHoraActual() {
+            const fechaHoraActual = new Date();
+            const day = fechaHoraActual.getDate().toString().padStart(2, '0');
+            const month = (fechaHoraActual.getMonth() + 1).toString().padStart(2, '0'); // Los meses comienzan desde 0
+            const year = fechaHoraActual.getFullYear();
+            const hour = fechaHoraActual.getHours().toString().padStart(2, '0');
+            const minutes = fechaHoraActual.getMinutes().toString().padStart(2, '0');
+            const seconds = fechaHoraActual.getSeconds().toString().padStart(2, '0');
+            return `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`;
+        }
 
     }
 }
