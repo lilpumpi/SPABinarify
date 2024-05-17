@@ -1,0 +1,16 @@
+<div class="suscription-container">
+    <h3>{{nombre}}</h3>
+    <p id="descripcion">{{descripcion}}</p>
+
+    <p id="owner">{{i18n "Created by "}}: {{owner}}</p>
+
+    {{#if status}}
+        <p id="time" class="time">{{auto_off_time}} min</p>
+    {{else}}
+        <p id="fecha" class="time">{{last_time}}</p>
+    {{/if}}
+
+    <div class="suscribe">
+        <button type="submit" name="submit" class="btn-suscribe" id="btn-unsuscribe" item="{{id}}">{{i18n "Unsuscribe"}}</button>
+    </div>
+</div>

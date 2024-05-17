@@ -1,0 +1,19 @@
+<div class="suscriptions">
+    <div id="barra">
+        <h2>{{i18n 'Suscriptions'}}</h2>
+    </div>
+
+    <!-- Mostramos los switches dinámicamente desde la base de datos -->
+    <div id="suscriptions">
+        {{#if suscriptions.length}}
+
+            {{#each suscriptions}}
+                <div fronty-component="SuscriptionRowComponent" key="{{id}}" model="suscriptions[{{@index}}]" id="item-{{id}}"></div>
+            {{/each}}
+
+        {{else}}
+            <div id="mensaje">{{i18n 'No suscriptions'}}</div>
+        {{/if}}
+    </div>
+
+</div>

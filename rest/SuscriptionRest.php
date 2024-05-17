@@ -44,9 +44,14 @@ class SuscriptionRest extends BaseRest {
 		foreach($suscriptions as $suscription) {
 			array_push($suscriptions_array, array(
 				"id" => $suscription->getId(),
-				"switch_id" => $suscription->getSwitch()->getPublicId(),
+				"switch_id" => $suscription->getSwitch()->getId(),
+				"switch_description" => $suscription->getSwitch()->getDescription(),
 				"switch_name" => $suscription->getSwitch()->getName(),
-				"switch_owner" => $suscription->getSwitch()->getOwner()->getUsername()
+				"switch_owner" => $suscription->getSwitch()->getOwner()->getUsername(),
+				"switch_auto_off_time" => $suscription->getSwitch()->getAutoOffTime(),
+				"switch_last_time" => $suscription->getSwitch()->getLastTime(),
+				"switch_status" => $suscription->getSwitch()->getStatus(),
+				"username" => $suscription->getUser()->getUsername(),
 			));
 		}
 
@@ -93,13 +98,14 @@ class SuscriptionRest extends BaseRest {
 		}
 	}
 
-    
-    public function readSuscription($suscriptionId) {
-		// find the Switch object in the database
-		$suscription = $this->suscriptionMapper->findById($suscriptionId);
+    //Lee una suscripcion a partir de un switch y un usuario
+    public function readSuscription($switchId) {
+		$currentUser = parent::authenticateUser();
+		//Conseguimos la suscripcion a partir de un switch y un usuario
+		$suscription = $this->suscriptionMapper->isSuscribed($currentUser->getUsername(), $switchId);
 		if ($suscription == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			echo("Suscription with id ".$suscriptionId." not found");
+			echo("Suscription not found");
 			return;
 		}
 
