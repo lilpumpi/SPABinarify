@@ -18,11 +18,13 @@ class SwitchViewComponent extends Fronty.ModelComponent {
     this.addEventListener('click', '#btn-apagar', (event) => {
       this.apagarSwitch(event);
     });
+
+    //Falta boton suscribirse y desuscribirse
     
   }
 
   onStart() {
-    var switchId = this.router.getRouteQueryParam('id');
+    var switchId = this.router.getRouteQueryParam('private_id');
     this.loadSwitch(switchId);
   }
 
@@ -39,7 +41,7 @@ class SwitchViewComponent extends Fronty.ModelComponent {
   encenderSwitch(event) {
     //La petición REST para actualizar un switch solo necesita el tiempo y la fecha
     var newSwitch = {};
-    newSwitch.id = event.target.getAttribute('item');
+    newSwitch.private_id = event.target.getAttribute('item');
     newSwitch.auto_off_time = 10;
     newSwitch.last_time = this.getFechaHoraActual();
 
@@ -49,7 +51,7 @@ class SwitchViewComponent extends Fronty.ModelComponent {
         alert('switch cannot be turned on');
     })
     .always(() => {
-      this.loadSwitch(newSwitch.id);
+      this.loadSwitch(newSwitch.private_id);
     });
   }
 
@@ -57,7 +59,7 @@ class SwitchViewComponent extends Fronty.ModelComponent {
   apagarSwitch(event) {
       //La petición REST para actualizar un switch solo necesita el tiempo y la fecha
       var newSwitch = {};
-      newSwitch.id = event.target.getAttribute('item');
+      newSwitch.private_id = event.target.getAttribute('item');
       newSwitch.auto_off_time = 0;
 
       //Enviamos petición REST a update a través de SwitchService
@@ -66,7 +68,7 @@ class SwitchViewComponent extends Fronty.ModelComponent {
           alert('switch cannot be turned off');
       })
       .always(() => {
-        this.loadSwitch(newSwitch.id);
+        this.loadSwitch(newSwitch.private_id);
       });
   }
 

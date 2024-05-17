@@ -40,7 +40,13 @@ Promise.all([
     loadTextFile('templates/components/switch-view.hbs').then((source) =>
     Handlebars.templates.switchview = Handlebars.compile(source)),
     loadTextFile('templates/components/switch-add.hbs').then((source) =>
-    Handlebars.templates.switchadd = Handlebars.compile(source))
+    Handlebars.templates.switchadd = Handlebars.compile(source)),
+    loadTextFile('templates/components/suscriptions-list.hbs').then((source) =>
+    Handlebars.templates.suscriptionslist = Handlebars.compile(source)),
+    loadTextFile('templates/components/suscription-item.hbs').then((source) =>
+    Handlebars.templates.suscriptionitem = Handlebars.compile(source)),
+    loadTextFile('templates/components/switch-public-view.hbs').then((source) =>
+    Handlebars.templates.switchpublicview = Handlebars.compile(source))
   ])
   .then(() => {
     $(() => {

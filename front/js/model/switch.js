@@ -38,6 +38,7 @@ class SwitchModel extends Fronty.Model {
       if (status) {
         this.status = status;
       }
+
     }
   
     setName(name) {
@@ -75,6 +76,7 @@ class SwitchModel extends Fronty.Model {
             self.status = status;
         });
     }
-
   }
+
+
   

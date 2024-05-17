@@ -73,7 +73,15 @@ class SwitchMapper {
 		$switch = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		if($switch != null) {
-			return $switch["id"];
+			return new SwitchDevice(
+			$switch["id"],
+            $switch["public_id"],
+            $switch["private_id"],
+            $switch["nombre"],
+            $switch["descripcion"],
+			new User($switch["owner"]),
+            $switch["auto_off_time"],
+            $switch["last_time"]);
 		} else {
 			return NULL;
 		}
@@ -86,7 +94,15 @@ class SwitchMapper {
 		$switch = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		if($switch != null) {
-			return $switch["id"];
+			return new SwitchDevice(
+			$switch["id"],
+            $switch["public_id"],
+            $switch["private_id"],
+            $switch["nombre"],
+            $switch["descripcion"],
+			new User($switch["owner"]),
+            $switch["auto_off_time"],
+            $switch["last_time"]);
 		} else {
 			return NULL;
 		}

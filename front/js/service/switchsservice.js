@@ -12,7 +12,7 @@ class SwitchsService {
     findSwitch(id) {
       return $.get(AppConfig.backendServer+'/rest/switch/' + id);
     }
-  
+
     deleteSwitch(id) {
       return $.ajax({
         url: AppConfig.backendServer+'/rest/switch/' + id,
@@ -22,7 +22,7 @@ class SwitchsService {
   
     updateSwitch(switchDevice) {
       return $.ajax({
-        url: AppConfig.backendServer+'/rest/switch/' + switchDevice.id,
+        url: AppConfig.backendServer+'/rest/switch/' + switchDevice.private_id,
         method: 'PUT',
         data: JSON.stringify(switchDevice),
         contentType: 'application/json'

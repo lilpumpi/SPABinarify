@@ -21,11 +21,15 @@
 
             <div id="boton">
 
-                <!-- Mostrar botón de encender o apagar si el usuario es el dueño del switch -->
-                {{#if selectedSwitch.status}}
-                  <button type="submit" class="btn-cambiarEstado" id="btn-apagar" item="{{selectedSwitch.private_id}}">{{i18n "Turn Off"}}</button>
-                {{else}}
-                  <button type="submit" class="btn-cambiarEstado" id="btn-encender" item="{{selectedSwitch.private_id}}">{{i18n "Turn On"}}</button>
+                <!-- Mostrar botón de suscribir si el usuario esta logeado -->
+                {{#if user.currentUser}}
+
+                    {{#if selectedSwitch.subscribed}}
+                        <button type="submit" name="submit" class="btn-suscribe" id="btn-unsuscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Unsubscribe'}}</button>
+                    {{else}}
+                        <button type="submit" name="submit" class="btn-suscribe" id="btn-suscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Subscribe'}}</button>
+                    {{/if}}
+                    
                 {{/if}}
 
             </div>

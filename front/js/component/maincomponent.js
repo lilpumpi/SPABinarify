@@ -6,6 +6,7 @@ class MainComponent extends Fronty.RouterComponent {
     // we can instantiate models at any place
     this.userModel = new UserModel();
     this.switchsModel = new SwitchsModel();
+    this.suscriptionsModel = new SuscriptionsModel();
     this.userService = new UserService();
 
     super.setRouterConfig({
@@ -16,10 +17,18 @@ class MainComponent extends Fronty.RouterComponent {
       'view-switch': {
         component: new SwitchViewComponent(this.switchsModel, this.userModel, this),
         title: 'Switch'
-      },     
+      },   
+      'view-public-switch': {
+        component: new SwitchPublicViewComponent(this.switchsModel, this.userModel, this),
+        title: 'Public Switch'
+      },  
       'add-switch': {
         component: new SwitchAddComponent(this.switchsModel, this.userModel, this),
         title: 'Add Switch'
+      },
+      suscriptions: {
+        component: new SuscriptionsComponent(this.suscriptionsModel, this.userModel, this),
+        title: 'Suscriptions'
       },
       login: {
         component: new LoginComponent(this.userModel, this),
@@ -28,6 +37,7 @@ class MainComponent extends Fronty.RouterComponent {
       defaultRoute: 'switchs'
     });
 
+    
     Handlebars.registerHelper('currentPage', () => {
           return super.getCurrentPage();
     });

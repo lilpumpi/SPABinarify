@@ -59,6 +59,62 @@ class SwitchRest extends BaseRest {
 
 
 
+	public function getPrivateSwitch($private_id) {
+		// find the Switch object in the database
+		$switch = $this->switchMapper->findByPrivateId($private_id);
+		if ($switch == NULL) {
+			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
+			echo("Switch with id ".$private_id." not found");
+			return;
+		}
+
+		$switch_array = array(
+			"id" => $switch->getId(),
+			"public_id" => $switch->getPublicId(),
+			"private_id" => $switch->getPrivateId(),
+			"nombre" => $switch->getName(),
+			"descripcion" => $switch->getDescription(),
+			"owner" => $switch->getOwner()->getUsername(),
+			"auto_off_time" => $switch->getAutoOffTime(),
+			"last_time" => $switch->getLastTime(),
+			"status" => $switch->getStatus() 
+		);
+
+		header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+		header('Content-Type: application/json');
+		echo(json_encode($switch_array));
+	}
+
+
+
+	public function getPublicSwitch($public_id) {
+		// find the Switch object in the database
+		$switch = $this->switchMapper->findByPublicId($public_id);
+		if ($switch == NULL) {
+			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
+			echo("Switch with id ".$public_id." not found");
+			return;
+		}
+
+		$switch_array = array(
+			"id" => $switch->getId(),
+			"public_id" => $switch->getPublicId(),
+			"private_id" => $switch->getPrivateId(),
+			"nombre" => $switch->getName(),
+			"descripcion" => $switch->getDescription(),
+			"owner" => $switch->getOwner()->getUsername(),
+			"auto_off_time" => $switch->getAutoOffTime(),
+			"last_time" => $switch->getLastTime(),
+			"status" => $switch->getStatus() 
+		);
+
+		header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+		header('Content-Type: application/json');
+		echo(json_encode($switch_array));
+	}
+
+
+
 	public function createSwitch($data) {
 		$currentUser = parent::authenticateUser();
 		$switch = new SwitchDevice();
@@ -106,8 +162,13 @@ class SwitchRest extends BaseRest {
 
 
 	public function readSwitch($switchId) {
-		// find the Switch object in the database
-		$switch = $this->switchMapper->findById($switchId);
+		//Is private????
+		$switch = $this->switchMapper->findByPrivateId($switchId);
+		if ($switch == NULL) { //Is public??
+			$switch = $this->switchMapper->findByPublicId($switchId);
+		}
+
+		//Switch dont exists
 		if ($switch == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
 			echo("Switch with id ".$switchId." not found");
@@ -134,22 +195,26 @@ class SwitchRest extends BaseRest {
 
 
 	public function updateSwitch($switchId, $data) {
-		$currentUser = parent::authenticateUser();
+		//Is private????
+		$switch = $this->switchMapper->findByPrivateId($switchId);
+		if ($switch == NULL) { //Is public??
 
-		// find the Switch object in the database
-		$switch = $this->switchMapper->findById($switchId);
-		if ($switch == NULL) {
-			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			echo("Switch with id ".$switchId." not found");
-			return;
-		}
+			$switch = $this->switchMapper->findByPublicId($switchId);
 
-		// Check if the Switch owner is the currentUser (in Session)
-		if ($switch->getOwner() != $currentUser) {
-			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
-			echo("you are not the owner of this switch");
-			return;
-		}
+			if ($switch == NULL) {
+				header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
+				echo("Switch with id ".$switchId." not found");
+				return;
+			}
+			
+			$currentUser = parent::authenticateUser();
+			// Check if the Switch owner is the currentUser (in Session)
+			if ($switch->getOwner() != $currentUser) {
+				header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
+				echo("you are not the owner of this switch");
+				return;
+			}
+		} 
 		
 		$switch->setAutoOffTime($data->auto_off_time);
 		$switch->setLastTime($data->last_time);
