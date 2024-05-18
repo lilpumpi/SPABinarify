@@ -50,6 +50,20 @@ class MainComponent extends Fronty.RouterComponent {
     this.addChildComponent(this._createUserBarComponent());
     this.addChildComponent(this._createLanguageComponent());
 
+
+    //Eventos para abrir y cerrar el menu desplegable
+    this.addEventListener('click', '#menu-icon', (event) => {
+      var containerMenu = document.getElementById('containerMenu');
+      containerMenu.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    });
+
+    this.addEventListener('click', '#cerrar', (event) => {
+      var containerMenu = document.getElementById('containerMenu');
+      containerMenu.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
   }
 
   start() {
@@ -90,5 +104,5 @@ class MainComponent extends Fronty.RouterComponent {
     });
 
     return languageComponent;
-  }
+  }  
 }

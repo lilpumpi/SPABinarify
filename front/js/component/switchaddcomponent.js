@@ -20,7 +20,7 @@ class SwitchAddComponent extends Fronty.ModelComponent {
 
         this.switchsService.addSwitch(newSwitch)
           .then(() => {
-            this.router.goToPage('switchs');
+            this.router.goToPage('dashboard');
           })
           .fail((xhr, errorThrown, statusText) => {
             if (xhr.status == 400) {

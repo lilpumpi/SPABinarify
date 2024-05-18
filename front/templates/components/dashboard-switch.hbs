@@ -1,21 +1,17 @@
-<div class="switch-container">
+<div class="switch-dashboard-container">
   <h3>{{name}}</h3>
   <p id="descripcion">{{description}}</p>
 
-  <div class="icon-info" id="info-<?= $switch->getId(); ?>">
-    <a href="#view-public-switch?public_id={{public_id}}">Ver</a>
+  <div class="icon-info" id="info">
+    <a href="#view-switch?private_id={{private_id}}"><i class="fa-solid fa-circle-info"></i></a>
   </div>
-  
-  {{#if status}}
-     <p id="time" class="time">{{auto_off_time}} min</p>
-  {{else}}
-      <p id="fecha" class="time">{{last_time}}</p>
-  {{/if}}
 
-  {{#if status}}
-    <button type="submit" class="btn-cambiarEstado" id="btn-apagar" item="{{private_id}}">{{i18n "Turn Off"}}</button>
-  {{else}}
-    <button type="submit" class="btn-cambiarEstado" id="btn-encender" item="{{private_id}}">{{i18n "Turn On"}}</button>
-  {{/if}}
+    <div class="cambiarEstado">
+        {{#if status}}
+            <button type="submit" class="btn-cambiarEstado" id="btn-apagar" item="{{private_id}}">{{i18n "Turn Off"}}</button>
+        {{else}}
+            <button type="submit" class="btn-cambiarEstado" id="btn-encender" item="{{private_id}}">{{i18n "Turn On"}}</button>
+        {{/if}}
+    </div>
 
 </div>

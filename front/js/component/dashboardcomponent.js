@@ -72,7 +72,7 @@ class DashboardComponent extends Fronty.ModelComponent {
 //Representa a una fila o un switch dentro del dashboard
 class DashboardSwitchComponent extends Fronty.ModelComponent {
     constructor(switchModel, userModel, router, dashboardComponent) {
-        super(Handlebars.templates.switchrow, switchModel, null, null);
+        super(Handlebars.templates.dashboardswitch, switchModel, null, null);
         
         this.dashboardComponent = dashboardComponent;
         

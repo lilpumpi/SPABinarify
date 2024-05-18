@@ -1,12 +1,12 @@
 <div class="switches">
-    <div id="barra">
+    <div id="barra-view">
         <h2>{{i18n 'Switch Details'}}</h2>
     </div>
 
     <!-- Mostramos el switch desde la base de datos -->
     <div id="switches">
 
-        <div class="switch-container">
+        <div class="switch-view-container">
             <h3>{{selectedSwitch.nombre}}</h3>
             <p id="descripcion">{{selectedSwitch.descripcion}}</p>
 
@@ -23,9 +23,9 @@
 
                 <!-- Mostrar botón de encender o apagar si el usuario es el dueño del switch -->
                 {{#if selectedSwitch.status}}
-                  <button type="submit" class="btn-cambiarEstado" id="btn-apagar" item="{{selectedSwitch.private_id}}">{{i18n "Turn Off"}}</button>
+                  <button type="submit" class="btn-view-cambiarEstado" id="btn-apagar" item="{{selectedSwitch.private_id}}">{{i18n "Turn Off"}}</button>
                 {{else}}
-                  <button type="submit" class="btn-cambiarEstado" id="btn-encender" item="{{selectedSwitch.private_id}}">{{i18n "Turn On"}}</button>
+                  <button type="submit" class="btn-view-cambiarEstado" id="btn-encender" item="{{selectedSwitch.private_id}}">{{i18n "Turn On"}}</button>
                 {{/if}}
 
             </div>
