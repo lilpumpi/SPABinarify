@@ -5,6 +5,7 @@ class MainComponent extends Fronty.RouterComponent {
     // models instantiation
     // we can instantiate models at any place
     this.userModel = new UserModel();
+    this.dashboardModel = new DashboardModel();
     this.switchsModel = new SwitchsModel();
     this.suscriptionsModel = new SuscriptionsModel();
     this.userService = new UserService();
@@ -12,6 +13,10 @@ class MainComponent extends Fronty.RouterComponent {
     super.setRouterConfig({
       switchs: {
         component: new SwitchsComponent(this.switchsModel, this.userModel, this),
+        title: 'Switchs'
+      },  
+      dashboard: {
+        component: new DashboardComponent(this.dashboardModel, this.userModel, this),
         title: 'Switchs'
       },       
       'view-switch': {
@@ -34,7 +39,7 @@ class MainComponent extends Fronty.RouterComponent {
         component: new LoginComponent(this.userModel, this),
         title: 'Login'
       },
-      defaultRoute: 'switchs'
+      defaultRoute: 'dashboard'
     });
 
     

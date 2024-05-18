@@ -1,20 +1,22 @@
 //Representaria la lisat de switches
-class SwitchsComponent extends Fronty.ModelComponent {
-    constructor(switchsModel, userModel, router) {
-        super(Handlebars.templates.switchstable, switchsModel, null, null);
+class DashboardComponent extends Fronty.ModelComponent {
+    constructor(dashboardModel, userModel, router) {
+        super(Handlebars.templates.dashboard, dashboardModel, null, null);
         
         
-        this.switchsModel = switchsModel;
+        this.dashboardModel = dashboardModel;
         this.userModel = userModel;
         this.addModel('user', userModel);
         this.router = router;
 
         this.switchsService = new SwitchsService();
+        this.suscriptionsService = new SuscriptionsService();
 
     }
 
     onStart() {
         this.updateSwitchs();
+        this.updateSuscriptions();
     }
 
     //Recarga la lista de switches
@@ -23,7 +25,7 @@ class SwitchsComponent extends Fronty.ModelComponent {
         this.switchsService.findAllSwitchs().then((data) => {
 
         //Actualizamos el modelo de la lista de switches con la lista recibida
-        this.switchsModel.setSwitchs(
+        this.dashboardModel.setSwitchs(
             // create a Fronty.Model for each item retrieved from the backend
             data.map(
             (item) => new SwitchModel(item.id, item.public_id, item.private_id, item.nombre, item.descripcion, item.owner, item.auto_off_time, item.last_time, item.status)
@@ -33,19 +35,46 @@ class SwitchsComponent extends Fronty.ModelComponent {
 
     }
 
+    //Recarga la lista de suscripciones
+    updateSuscriptions() {
+        //Enviamos peticion rest a traves de Suscriptionsservice para recuperar todas las suscripciones del usuario
+        this.suscriptionsService.findAllSuscriptions().then((data) => {
+        
+
+        //Actualizamos el modelo de la lista de suscripciones con la lista recibida
+        this.dashboardModel.setSuscriptions(
+            // create a Fronty.Model for each item retrieved from the backend
+            data.map((item) => new SuscriptionModel(item.id, item.switch_id,  
+                                    item.switch_name, 
+                                    item.switch_description, 
+                                    item.switch_owner, 
+                                    item.switch_auto_off_time, 
+                                    item.switch_last_time, 
+                                    item.switch_status,
+                                    item.username)
+        ));
+
+        });
+
+    }
+
     // Override
     createChildModelComponent(className, element, id, modelItem) {
-        return new SwitchRowComponent(modelItem, this.userModel, this.router, this);
+        if (className == "Switch") {
+            return new DashboardSwitchComponent(modelItem, this.userModel, this.router, this);
+        } else if (className == "Suscription") {
+            return new DashboardSuscriptionComponent(modelItem, this.userModel, this.router, this);
+        }
     }
 }
   
 
-//Representa a una fila o un switch
-class SwitchRowComponent extends Fronty.ModelComponent {
-    constructor(switchModel, userModel, router, switchsComponent) {
+//Representa a una fila o un switch dentro del dashboard
+class DashboardSwitchComponent extends Fronty.ModelComponent {
+    constructor(switchModel, userModel, router, dashboardComponent) {
         super(Handlebars.templates.switchrow, switchModel, null, null);
         
-        this.switchsComponent = switchsComponent;
+        this.dashboardComponent = dashboardComponent;
         
         this.userModel = userModel;
         this.addModel('user', userModel); // a secondary model
@@ -62,11 +91,6 @@ class SwitchRowComponent extends Fronty.ModelComponent {
             this.apagarSwitch(event);
         });
 
-        // Event listener para eliminar el switch
-        this.addEventListener('click', '.btn-eliminar', (event) => {
-            this.eliminarSwitch(event);
-        });
-
     }
 
     // Event listener para encender el switch
@@ -78,12 +102,12 @@ class SwitchRowComponent extends Fronty.ModelComponent {
         newSwitch.last_time = this.getFechaHoraActual();
 
         //Enviamos petición REST a update a través de SwitchService
-        this.switchsComponent.switchsService.updateSwitch(newSwitch)
+        this.dashboardComponent.switchsService.updateSwitch(newSwitch)
         .fail(() => {
             alert('switch cannot be turned on');
         })
         .always(() => {
-            this.switchsComponent.updateSwitchs();
+            this.dashboardComponent.updateSwitchs();
         });
     }
 
@@ -95,24 +119,12 @@ class SwitchRowComponent extends Fronty.ModelComponent {
         newSwitch.auto_off_time = 0;
 
         //Enviamos petición REST a update a través de SwitchService
-        this.switchsComponent.switchsService.updateSwitch(newSwitch)
+        this.dashboardComponent.switchsService.updateSwitch(newSwitch)
         .fail(() => {
             alert('switch cannot be turned off');
         })
         .always(() => {
-            this.switchsComponent.updateSwitchs();
-        });
-    }
-
-    //Se añadirá un event listener para eliminar el switch (depende del html)
-    eliminarSwitch(event) {
-        var switchId = event.target.getAttribute('item');
-        this.switchsComponent.switchsService.deleteSwitch(switchId) //Enviamos peticion rest delete a traves de Switchsservice
-        .fail(() => {
-            alert('switch cannot be deleted')
-        })
-        .always(() => {
-            this.switchsComponent.updateSwitchs(); //Una vez eliminado el switch, actualizamos la lista
+            this.dashboardComponent.updateSwitchs();
         });
     }
 
@@ -126,5 +138,20 @@ class SwitchRowComponent extends Fronty.ModelComponent {
         const seconds = fechaHoraActual.getSeconds().toString().padStart(2, '0');
         return `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`;
     }  
+}
+
+
+//Representa a una fila o una suscripcion en el dashboard
+class DashboardSuscriptionComponent extends Fronty.ModelComponent {
+    constructor(suscriptionModel, userModel, router, dashboardComponent) {
+        super(Handlebars.templates.dashboardsuscription, suscriptionModel, null, null);
+        
+        this.dashboardComponent = dashboardComponent;
+        
+        this.userModel = userModel;
+        this.addModel('user', userModel); // a secondary model
+        
+        this.router = router;
+    }
 }
   

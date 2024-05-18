@@ -46,8 +46,14 @@ Promise.all([
     loadTextFile('templates/components/suscription-item.hbs').then((source) =>
     Handlebars.templates.suscriptionitem = Handlebars.compile(source)),
     loadTextFile('templates/components/switch-public-view.hbs').then((source) =>
-    Handlebars.templates.switchpublicview = Handlebars.compile(source))
-  ])
+    Handlebars.templates.switchpublicview = Handlebars.compile(source)),
+    loadTextFile('templates/components/dashboard.hbs').then((source) =>
+    Handlebars.templates.dashboard = Handlebars.compile(source)),
+    loadTextFile('templates/components/dashboard-switch.hbs').then((source) =>
+    Handlebars.templates.dashboardswitch = Handlebars.compile(source)),
+    loadTextFile('templates/components/dashboard-suscription.hbs').then((source) =>
+    Handlebars.templates.dashboardsuscription = Handlebars.compile(source))
+    ])
   .then(() => {
     $(() => {
       new MainComponent().start();
