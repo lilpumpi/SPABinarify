@@ -1,0 +1,80 @@
+/* Formulario */
+#form-container {
+    padding: 70px;   
+    position: relative; 
+}
+
+#formulario{
+    position: absolute;
+    padding-top: 50px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 800px;
+}
+
+#formulario label{
+    display: none;
+}
+
+#botones{
+    margin-top: 50px;
+    width: 100%; 
+    text-align: end;
+}
+
+button{
+    padding: 10px 50px;
+    margin-left: 20px;
+    font-size: 20px;
+    border: none;
+    border-top: solid 3px transparent;
+    color: #3d3d3d;
+    background-color: #f8f8f8a6;
+}
+
+button:hover{
+    color: #636363;
+    border-top: solid 3px #2196F3;
+    background-color: #f8f8f8;
+}
+
+input{
+    margin-top: 10px;
+    padding: 20px;
+    font-size: 20px;
+    color: #3d3d3d;
+    background-color: #e4f3fac2;
+    border: none;
+    border-top: solid 3px transparent;
+    width: 100%; 
+}
+
+input:hover{
+    border-top: solid 3px #2196F3;
+}
+
+textarea{
+    margin-top: 10px;
+    padding: 20px;
+    font-size: 20px;
+    color: #3d3d3d;
+    background-color: #e4f3fac2;
+    border: none;
+    border-top: solid 3px transparent;
+    width: 100%; 
+}
+
+textarea:hover{
+    border-top: solid 3px #2196F3;
+}
+
+
+/* Icons */
+
+.fa-circle-info, .fa-bars{
+    color: #2196F3;
+}
+
+.fa-toggle-off{
+    font-size: 50px;
+}

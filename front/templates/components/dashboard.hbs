@@ -1,0 +1,37 @@
+<div id="dashboard">
+    <div class="switches">
+        <h2>Switches</h2>
+
+        <!-- Aqui se mostraran los switches de forma dinamica -->
+        <div id="switches">
+        {{#if switchs.length}}
+
+            {{#each switchs}}
+                <div fronty-component="Switch" key="{{id}}" model="switchs[{{@index}}]" id="item-{{id}}"></div>
+            {{/each}}
+
+        {{else}}
+            <div id="mensaje">{{i18n 'No switches'}}</div>
+        {{/if}}
+        </div>
+
+    </div>
+
+    <!-- Seccion donde se mostraran de forma muy generica los switches suscritos -->
+    <div class="suscripciones">
+        <h2>{{i18n 'Suscriptions'}}</h2>
+
+        <!-- Aqui se mostraran las suscripciones de forma dinamica -->
+        <div id="suscriptions">
+            {{#if suscriptions.length}}
+
+                {{#each suscriptions}}
+                    <div fronty-component="Suscription" key="{{id}}" model="suscriptions[{{@index}}]" id="item-{{id}}"></div>
+                {{/each}}
+
+            {{else}}
+                <div id="mensaje">{{i18n 'No suscriptions'}}</div>
+            {{/if}}
+        </div>    
+    </div>
+</div>

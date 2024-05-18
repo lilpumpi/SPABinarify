@@ -1,0 +1,11 @@
+<div class="suscription-container">
+    <h3>{{nombre}}</h3>
+    <p id="descripcion">{{owner}}</p>
+
+    {{#if status}}
+        <p id="encendido" class="estado">{{i18n "Power on"}}</p>
+    {{else}}
+        <p id="apagado" class="estado">{{i18n "Power off"}}</p>
+    {{/if}}
+    
+</div>

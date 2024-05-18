@@ -49,11 +49,47 @@ class SuscriptionModel extends Fronty.Model {
       });
     }
 
+    setNombre(nombre) {
+      this.set((self) => {
+        self.nombre = nombre;
+      });
+    }
+
+    setDescripcion(descripcion) {
+      this.set((self) => {
+        self.descripcion = descripcion;
+      });
+    }
+
+    setAutoOffTime(auto_off_time) {
+      this.set((self) => {
+        self.auto_off_time = auto_off_time;
+      });
+    }
+
+    setLastTime(lastTime) {
+      this.set((self) => {
+        self.lastTime = lastTime;
+      });
+    }
+
+    setOwner(owner) {
+      this.set((self) => {
+        self.owner = owner;
+      });
+    }
+
+    setStatus(status) {
+      this.set((self) => {
+        self.status = status;
+      });
+    }
+
     setUsername(user) {
         this.set((self) => {
           self.user = user;
         });
-      }
+    }
 
   }
   

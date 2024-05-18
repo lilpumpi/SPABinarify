@@ -1,0 +1,117 @@
+/*Barra principal*/
+#barra {
+    max-width: 800px; /* Ajuste del ancho máximo */
+    margin: 0 auto; /* Centrar horizontalmente */
+    margin-bottom: 20px;
+}
+
+/* Switch */
+.switches {
+    padding: 70px;
+}
+
+.switch-container {
+    display: grid;
+    grid-template-columns: 70% auto;
+    grid-template-rows: auto auto auto auto;
+    gap: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-top: 3px solid #2196F3;
+    position: relative;
+    align-items: center;
+    max-width: 800px; /* Nuevo */
+    margin: 0 auto; /* Nuevo */
+    background-color: #ffffffea;
+}
+
+.switch-container h3 {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    margin-bottom: 60px;
+    align-self: center;
+}
+
+.switch-container #descripcion {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    margin-bottom: 30px;
+}
+
+.switch-container .time {
+    justify-self: end;
+    align-self: center;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    /* Estilos para el ícono de información */
+}
+
+.switch-container #owner {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    /* Estilos para el ícono de información */
+}
+
+
+.switch-container #boton {
+    width: 600px;
+    margin-top: 80px;
+    justify-self: center;
+    align-self: center;
+    grid-column: 1 / 3;
+    grid-row: 4 / 5;
+}
+
+.btn-cambiarEstado {
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 100%; /* Cambiado */
+    max-width: 600px; /* Nuevo */
+    border: none;
+    background-color: #e4e4e4;
+    color: #afafaf;
+    font-weight: 400;
+    font-size: 18px;
+    display: block; /* Nuevo */
+    margin: 0 auto; /* Nuevo */
+}
+
+#btn-apagar:hover {
+    background-color: #ffa8a8;
+    color: #222222;
+}
+
+#btn-encender:hover {
+    background-color: #acffcc;
+    color: #222222;
+}
+
+
+.btn-suscribe {
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 100%; /* Cambiado */
+    max-width: 600px; /* Nuevo */
+    border: none;
+    background-color: #e4e4e4;
+    color: #afafaf;
+    font-weight: 400;
+    font-size: 18px;
+    display: block; /* Nuevo */
+    margin: 0 auto; /* Nuevo */
+}
+
+#btn-suscribe:hover {
+    background-color: #acffcc;
+    color: #222222;
+}
+
+#btn-unsuscribe:hover {
+    background-color: #ffa8a8;
+    color: #222222;
+}
+
+/* Icons */
+.fa-circle-info, .fa-bars{
+    color: #2196F3;
+}

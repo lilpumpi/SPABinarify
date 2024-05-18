@@ -7,7 +7,7 @@ class SuscriptionsModel extends Fronty.Model {
       this.suscriptions = [];
     }
   
-    setSelectedSwitch(suscription) {
+    setSelectedSuscription(suscription) {
       this.set((self) => {
         self.selectedSuscription = suscription;
       });
