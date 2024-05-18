@@ -1,4 +1,758 @@
-#menu {
-    background-color: grey;
-  }
-  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../img/17973908.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-image: url(../img/17973908.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    /*sombra*/
+    box-shadow: 1px 5px 26px -8px rgba(0,0,0,0.41);
+    -webkit-box-shadow: 1px 5px 26px -8px rgba(0,0,0,0.41);
+    -moz-box-shadow: 1px 5px 26px -8px rgba(0,0,0,0.41);
+    
+    z-index: 1;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Estilos para el tamaño y alineación de tu logo */
+}
+
+header img{
+    height: 60px;
+}
+
+.menu-icon{
+    padding-left: 20px;
+    line-height: 80px;
+    font-size: 30px;
+}
+
+
+/* Menu */
+#containerMenu{
+    position: absolute;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 500ms ease;
+    z-index: 1000;
+    display: none;
+}
+
+#contMenu{
+    width: 100%;
+    max-width: 300px;
+    background-color: #1c1c1c;
+    min-height: 100vh;
+    position: relative;
+    position: fixed;
+    transition: all 500ms ease;
+}
+
+#contMenu nav{
+    transform: translateY(15%);
+}
+
+#contMenu nav a{
+    display: block;
+    font-size: 25px;
+    font-weight: 300;
+    text-decoration: none;
+    padding: 20px;
+    color: #c7c7c7;
+    border-left: 5px solid transparent;
+    transition: all 500ms ease;
+}
+
+#contMenu nav a:hover{
+    border-left: 5px solid #c7c7c7;
+    background-color: #252525;
+}
+
+#contMenu #cerrar{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+
+/* Seccion Principal */
+#maincontent {
+    background-color: rgba(255, 255, 255, 0.801);
+    margin-top: 80px;
+    min-height: 100vh;
+    z-index: 0;
+}
+
+#barra{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    color: #2196F3;
+    background-color: hsla(0, 0%, 80%, 0.706); 
+    margin-bottom: 20px;
+    padding: 5px 10px;
+}
+
+#barra h2{
+    grid-column: 1/2;
+    justify-self: left;
+    font-weight: 500;
+}
+
+#barra a{
+    grid-column: 2/3;
+    justify-self: right;
+    font-weight: 300;
+    text-decoration: none;
+    color: #2196F3;
+}
+
+
+
+/*------------CSS PARA DASHBOARD------------------*/
+
+.dashboard {
+    margin-top: 80px;
+    display: flex;
+    min-height: 100vh;
+    z-index: 0;
+}
+
+#dashboard-switches{
+    flex: 70%;
+    padding: 70px;
+}
+
+#dashboard-suscripciones{
+    flex: 30%;
+    padding: 70px;
+    border-left: 2px solid transparent;
+}
+
+#dashboard-suscripciones:hover{
+    border-left: 2px solid rgba(216, 233, 255, 0.651);
+    background-color: rgba(255, 255, 255, 0.747);
+    transition: all 400ms easy;
+}  
+
+
+/* Switch Container Dashboard*/
+.switch-dashboard-container {
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 85% auto;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-top: 3px solid transparent;
+    position: relative;
+    align-items: center;
+}
+
+.switch-dashboard-container:hover{
+    border-top: 3px solid #2196F3;
+    background-color: #ffffffea;
+    transition: all 500ms easy;
+}
+
+.switch-dashboard-container h3 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    margin: 0;
+}
+
+.switch-dashboard-container p {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    margin: 0;
+}
+
+.switch-dashboard-container .icon-info {
+    justify-self: end;
+    align-self: center;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    /* Estilos para el ícono de información */
+}
+
+
+
+/*Botones para cambair el estado*/
+.switch-dashboard-container .cambiarEstado{
+    justify-self: end;
+    align-self: center;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+.btn-cambiarEstado{
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 120px;
+    border: none;
+    background-color: #e4e4e4;
+    color: #afafaf;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+#btn-apagar:hover{
+    background-color: #ffa8a8;
+    color: #222222;
+}
+
+#btn-encender:hover{
+    background-color: #acffcc;
+    color: #222222;
+}
+
+
+#dashboard-h2{
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: #2196F3;
+    background-color: #ccccccb4;
+    padding: 4px;
+}
+
+
+/* Suscripcion container para dashboard*/
+.suscripcion-dashboard-container {
+    display: grid;
+    grid-template-columns: 80% auto;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid transparent;
+    position: relative;
+    align-items: center;
+}
+
+
+.suscripcion-dashboard-container:hover {
+    border: 1px solid #ccc;
+}
+
+.suscripcion-dashboard-container h3{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    margin: 0;
+}
+
+
+.suscripcion-dashboard-container #propietario{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    margin: 0;
+    font-size: 16px;
+}
+
+.suscripcion-dashboard-container .estado{
+    grid-column: 2/3;
+    grid-row: 1/3;
+    margin: 0;
+    font-size: 12px;
+    justify-self: end;
+    align-self: flex-end;
+}
+
+.suscripcion-dashboard-container #encendido{
+    color:#4CAF50;
+}
+
+.suscripcion-dashboard-container #apagado{
+    color:#ff2d2d;
+}
+
+
+/* Icons */
+.fa-circle-info, .fa-bars{
+    color: #2196F3;
+}
+
+
+
+/*------------ CSS PARA SWITCHES ------------------*/
+
+
+/* Switch */
+.switches {
+    padding: 70px;
+}
+
+.switch-container {
+    display: grid;
+    grid-template-columns: 80% auto;
+    grid-template-rows: auto auto auto auto;
+    gap: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-top: 3px solid transparent;
+    position: relative;
+    align-items: center;
+}
+
+.switch-container:hover{
+    border-top: 3px solid #2196F3;
+    background-color: #ffffffea;
+    transition: all 500ms easy;
+}
+
+.switch-container h3 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    margin: 0;
+}
+
+.switch-container #descripcion {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    margin: 0;
+}
+
+.switch-container .time {
+    justify-self: end;
+    align-self: center;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    /* Estilos para el ícono de información */
+}
+
+.switch-container .uris {
+    margin-top: 15px;
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+}
+
+.switch-container .eliminar{
+    justify-self: end;
+    align-self: center;
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+
+/*Botones para cambair el estado */
+.switch-container .cambiarEstado{
+    justify-self: end;
+    align-self: center;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+
+#btn-eliminar{
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 120px;
+    border: none;
+    background-color: #e4e4e4;
+    color: #afafaf;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+#btn-eliminar:hover{
+    background-color: #ffa8a8;
+    color: #222222;
+}
+
+
+/*------------ CSS PARA SUSCRIPCIONES ------------------*/
+
+/* Suscripciones */
+.suscriptions {
+    padding: 70px;
+}
+
+.suscription-container {
+    display: grid;
+    grid-template-columns: 80% auto;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-top: 3px solid transparent;
+    position: relative;
+    align-items: center;
+}
+
+.suscription-container:hover{
+    border-top: 3px solid #2196F3;
+    background-color: #ffffffea;
+    transition: all 500ms easy;
+}
+
+.suscription-container h3 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    margin: 0;
+}
+
+.suscription-container #descripcion {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    margin: 0;
+    padding-top: 30px;
+}
+
+.suscription-container .time {
+    justify-self: end;
+    align-self: center;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.suscription-container #owner {
+    margin-top: 15px;
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+
+.suscription-container .suscribe{
+    justify-self: end;
+    align-self: center;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+
+#btn-unsuscribe{
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 140px;
+    border: none;
+    background-color: #e4e4e4;
+    color: #afafaf;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+#btn-unsuscribe:hover{
+    background-color: #ffa8a8;
+    color: #222222;
+}
+
+
+/*------------ CSS PARA CREAR SWITCH ------------------*/
+
+/* Formulario */
+#form-container {
+    padding: 70px;
+    position: relative;   
+}
+
+#formulario{
+    position: absolute;
+    padding-top: 50px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 800px;
+}
+
+
+#botones{
+    margin-top: 50px;
+    width: 100%; 
+    text-align: end;
+}
+
+input{
+    margin-top: 10px;
+    padding: 20px;
+    font-size: 20px;
+    color: #3d3d3d;
+    background-color: #e4f3fac2;
+    border: none;
+    border-top: solid 3px transparent;
+    width: 100%; 
+}
+
+input:hover{
+    border-top: solid 3px #2196F3;
+}
+
+.botones-add{
+    color: #3d3d3d;
+    background-color: #f8f8f8a6;
+    padding: 10px 50px;
+    margin-left: 20px;
+    font-size: 20px;
+    border: none;
+    border-top: solid 3px transparent;
+}
+
+.botones-add:hover{
+    color: #636363;
+    border-top: solid 3px #2196F3;
+    background-color: #f8f8f8;
+}
+
+textarea{
+    margin-top: 10px;
+    padding: 20px;
+    font-size: 20px;
+    color: #3d3d3d;
+    background-color: #e4f3fac2;
+    border: none;
+    border-top: solid 3px transparent;
+    width: 100%;
+    
+}
+
+textarea:hover{
+    border-top: solid 3px #2196F3;
+}
+
+
+
+/*-----------   ----------------*/
+
+/*Barra principal*/
+#barra-view {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    color: #2196F3;
+    background-color: hsla(0, 0%, 80%, 0.706); 
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    max-width: 800px; /* Ajuste del ancho máximo */
+    margin: 0 auto; /* Centrar horizontalmente */
+    margin-bottom: 20px;
+}
+
+
+.switch-view-container {
+    display: grid;
+    grid-template-columns: 70% auto;
+    grid-template-rows: auto auto auto auto;
+    gap: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-top: 3px solid #2196F3;
+    position: relative;
+    align-items: center;
+    max-width: 800px; /* Nuevo */
+    margin: 0 auto; /* Nuevo */
+    background-color: #ffffffea;
+}
+
+.switch-view-container h3 {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    margin-bottom: 60px;
+    align-self: center;
+}
+
+.switch-view-container #descripcion {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    margin-bottom: 30px;
+}
+
+.switch-view-container .time {
+    justify-self: end;
+    align-self: center;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    /* Estilos para el ícono de información */
+}
+
+.switch-view-container #owner {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    /* Estilos para el ícono de información */
+}
+
+
+.switch-view-container #boton {
+    width: 600px;
+    margin-top: 80px;
+    justify-self: center;
+    align-self: center;
+    grid-column: 1 / 3;
+    grid-row: 4 / 5;
+}
+
+.btn-view-cambiarEstado {
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 100%; /* Cambiado */
+    max-width: 600px; /* Nuevo */
+    border: none;
+    background-color: #e4e4e4;
+    color: #afafaf;
+    font-weight: 400;
+    font-size: 18px;
+    display: block; /* Nuevo */
+    margin: 0 auto; /* Nuevo */
+}
+
+
+.btn-view-suscribe {
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 100%; /* Cambiado */
+    max-width: 600px; /* Nuevo */
+    border: none;
+    background-color: #e4e4e4;
+    color: #afafaf;
+    font-weight: 400;
+    font-size: 18px;
+    display: block; /* Nuevo */
+    margin: 0 auto; /* Nuevo */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer */
+#footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: hsla(199, 100%, 91%, 0.952); 
+    color: #2196F3;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    z-index: 1;
+}
+
+.language-selector {
+    display: flex;
+}
+
+.language-selector a {
+    text-decoration: none;
+    color: #333; /* Color de texto */
+    margin: 0 40px; /* Espacio entre los enlaces */
+    font-size: 16px; /* Tamaño del texto */
+}
+
+
+
+/* Estilos para la modal */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-header {
+    padding: 15px;
+    background-color: #2196F3;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #ffffff;
+    background-color: #2196F3;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.close-button {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.close-button:hover {
+    color: #ccc;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[id="timeModal"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.modal-body button {
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0e83cd;
+}
+
+
+/* Icons */
+.fa-circle-info, .fa-bars{
+    color: #2196F3;
+}

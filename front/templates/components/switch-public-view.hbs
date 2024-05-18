@@ -1,12 +1,12 @@
 <div class="switches">
-    <div id="barra">
+    <div id="barra-view">
         <h2>{{i18n 'Switch Details'}}</h2>
     </div>
 
     <!-- Mostramos el switch desde la base de datos -->
     <div id="switches">
 
-        <div class="switch-container">
+        <div class="switch-view-container">
             <h3>{{selectedSwitch.nombre}}</h3>
             <p id="descripcion">{{selectedSwitch.descripcion}}</p>
 
@@ -25,9 +25,9 @@
                 {{#if user.currentUser}}
 
                     {{#if selectedSwitch.subscribed}}
-                        <button type="submit" name="submit" class="btn-suscribe" id="btn-unsuscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Unsubscribe'}}</button>
+                        <button type="submit" name="submit" class="btn-view-suscribe" id="btn-unsuscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Unsubscribe'}}</button>
                     {{else}}
-                        <button type="submit" name="submit" class="btn-suscribe" id="btn-suscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Subscribe'}}</button>
+                        <button type="submit" name="submit" class="btn-view-suscribe" id="btn-suscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Subscribe'}}</button>
                     {{/if}}
                     
                 {{/if}}

@@ -14,11 +14,13 @@
       <p id="publica">{{i18n "Public URI"}}: <a href="#view-public-switch?public_id={{public_id}}">http://localhost/SPABinarify/front/#view-public-switch?public_id={{public_id}}</a></p>
   </div>
 
-  {{#if status}}
-    <button type="submit" class="btn-cambiarEstado" id="btn-apagar" item="{{private_id}}">{{i18n "Turn Off"}}</button>
-  {{else}}
-    <button type="submit" class="btn-cambiarEstado" id="btn-encender" item="{{private_id}}">{{i18n "Turn On"}}</button>
-  {{/if}}
+  <div class="cambiarEstado">
+    {{#if status}}
+      <button type="submit" class="btn-cambiarEstado" id="btn-apagar" item="{{private_id}}">{{i18n "Turn Off"}}</button>
+    {{else}}
+      <button type="submit" class="btn-cambiarEstado" id="btn-encender" item="{{private_id}}">{{i18n "Turn On"}}</button>
+    {{/if}}
+  </div>
 
   <div class="eliminar">
       <button type="submit" class="btn-eliminar" id="btn-eliminar" item="{{id}}">{{i18n "Delete"}}</button>

@@ -1,24 +1,32 @@
 <div>
-<header>
-  <h1>Binarify</h1>
-  <nav id="menu">
-    <ul>
-      <li><a href="#dashboard">{{i18n 'Inicio'}}</a></li>
-      <li><a href="#switchs">{{i18n 'Switches'}}</a></li>
-      <li><a href="#suscriptions">{{i18n 'Suscriptions'}}</a></li>
-      <li>
-        <div id="userbar">Loading...</div>
-      </li>
-    </ul>
-  </nav>
+ <!-- Header con el logotipo de la página web -->
+  <header>
+      <div class="logo">
+          <img src="/spabinarify/front/img/binarify.png" alt="Binarify">
+      </div>
+      <div class="menu-icon" id="menu-icon">
+          <i class="fa-solid fa-bars"></i>
+      </div>
+  </header>
 
-</header>
+  <!-- Menu navegacion -->
+  <div id="containerMenu">
+    <div id="contMenu">
+        <nav>
+            <a href="#dashboard">{{i18n 'Dashboard'}}</a>
+            <a href="#switchs">{{i18n 'Switches'}}</a>
+            <a href="#suscriptions">{{i18n 'Suscriptions'}}</a>
+            <a href="#add-switch">{{i18n 'Create'}}</a>
+            <a href="#">{{i18n 'Log out'}}</a>
+        </nav>
+        <i id="cerrar" class="fa-solid fa-xmark"></i>
+    </div>
+  </div>
 
-<!-- router contents -->
-<main id="maincontent">Loading...</main>
+  <!-- Contenido de la pagina -->
+  <main class="main-content" id="maincontent">Loading...</main>
 
-
-<footer>
-  <div id="languagecontrol">Loading...</div>
-</footer>
+  <footer id="footer">
+    <div id="languagecontrol">Loading...</div>
+  </footer>
 </div>

@@ -47,13 +47,6 @@
     grid-row: 4 / 5;
 }
 
-.switch-container .interruptor {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    justify-self: end;
-    align-self: end;
-}
-
 .switch-container .eliminar{
     justify-self: end;
     align-self: center;

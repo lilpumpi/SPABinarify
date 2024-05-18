@@ -76,16 +76,6 @@
     margin: 0 auto; /* Nuevo */
 }
 
-#btn-apagar:hover {
-    background-color: #ffa8a8;
-    color: #222222;
-}
-
-#btn-encender:hover {
-    background-color: #acffcc;
-    color: #222222;
-}
-
 
 .btn-suscribe {
     margin-top: 20px;
@@ -99,19 +89,4 @@
     font-size: 18px;
     display: block; /* Nuevo */
     margin: 0 auto; /* Nuevo */
-}
-
-#btn-suscribe:hover {
-    background-color: #acffcc;
-    color: #222222;
-}
-
-#btn-unsuscribe:hover {
-    background-color: #ffa8a8;
-    color: #222222;
-}
-
-/* Icons */
-.fa-circle-info, .fa-bars{
-    color: #2196F3;
 }

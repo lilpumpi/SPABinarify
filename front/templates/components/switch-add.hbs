@@ -1,10 +1,29 @@
-<div>
-  {{i18n 'Title'}}:<input type="text" id="name" value="{{selectedSwitch.name}}">
-  {{#i18n}}{{errors.title}}{{/i18n}}<br> {{i18n 'Content'}}:
-  <br>
-  <textarea id="description" rows="20" cols="80">{{selectedSwitch.description}}</textarea>
-  {{#i18n}}{{errors.content}}{{/i18n}}
-  <br>
-  <input type="number" id="auto_off_time" value="{{selectedSwitch.auto_off_time}}"></input>
-  <input type="button" id="savebutton" value="{{i18n 'Save'}}"></input>
+<div class="create-switch">
+  <div id="form-container">
+      <div id="barra">
+          <h3>{{i18n "Create Switch"}}</h3>
+      </div>
+
+      <div id="formulario">
+        <div id="cont-name" class="input">
+            <input type="text" id="name" placeholder="{{i18n 'Name'}}">
+            {{#i18n}}{{errors.title}}{{/i18n}}
+        </div>
+
+        <div id="cont-desc" class="input">
+            <textarea id="description" rows="10" cols="70" placeholder="{{i18n 'Description'}}" maxlength="400">{{selectedSwitch.description}}</textarea>
+            {{#i18n}}{{errors.content}}{{/i18n}}
+        </div>
+        
+        <div id="cont-time" class="input">
+            <input type="number" id="auto_off_time" placeholder="{{i18n 'Time'}} (min)"></input>
+        </div>
+          
+        <div id="botones">
+          <button class="botones-add" id="savebutton" value="{{i18n 'Save'}}">{{i18n 'Save'}}</button>
+          <button class="botones-add" type="button" id="cancelar" value="{{i18n 'Cancel'}}"><a href="#dashboard">{{i18n 'Cancel'}}</a></button>
+        </div>
+
+      </div>
+  </div>
 </div>
