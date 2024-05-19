@@ -51,7 +51,6 @@ class MainComponent extends Fronty.RouterComponent {
           return super.getCurrentPage();
     });
 
-    this.addChildComponent(this._createUserBarComponent());
     this.addChildComponent(this._createLanguageComponent());
 
 
@@ -66,6 +65,15 @@ class MainComponent extends Fronty.RouterComponent {
       var containerMenu = document.getElementById('containerMenu');
       containerMenu.style.display = 'none';
       document.body.style.overflow = 'auto';
+    });
+
+    this.addEventListener('click', '#logoutbutton', () => {
+      var containerMenu = document.getElementById('containerMenu');
+      containerMenu.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      this.userModel.logout();
+      this.userService.logout();
+      super.goToPage('login');
     });
 
   }
@@ -83,16 +91,6 @@ class MainComponent extends Fronty.RouterComponent {
       });
   }
 
-  _createUserBarComponent() {
-    var userbar = new Fronty.ModelComponent(Handlebars.templates.user, this.userModel, 'userbar');
-
-    userbar.addEventListener('click', '#logoutbutton', () => {
-      this.userModel.logout();
-      this.userService.logout();
-    });
-
-    return userbar;
-  }
 
   _createLanguageComponent() {
     var languageComponent = new Fronty.ModelComponent(Handlebars.templates.language, this.routerModel, 'languagecontrol');

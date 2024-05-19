@@ -3,7 +3,7 @@
       <div id="imagen">
           <img id="login-img" src="/spabinarify/front/img/binarify.png" alt="Binarify">
       </div>
-      {{#i18n}}{{loginError}}{{/i18n}}<br>
+      {{#i18n}}{{loginError}}{{/i18n}}
 
       <div class="login-form">
           <input class="login-input" type="text" id="login" placeholder="{{i18n 'Username'}}" required> 
@@ -15,4 +15,25 @@
           <a id="enlace-registro" href="#register">{{i18n 'Register'}}</a>
       </div>
   </div>
+
+  <style>
+    /* Estilos para ocultar el header */
+    header {
+      display: none;
+    }
+
+    /* Estilos para el footer */
+    #footer {
+      color: #2196F3;
+      background-color: transparent;
+    }
+
+    .language-selector a{
+        color: #2196F3;
+    }
+
+    body {
+      overflow: hidden;
+    }
+  </style>
 </div>
