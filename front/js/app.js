@@ -52,7 +52,9 @@ Promise.all([
     loadTextFile('templates/components/dashboard-switch.hbs').then((source) =>
     Handlebars.templates.dashboardswitch = Handlebars.compile(source)),
     loadTextFile('templates/components/dashboard-suscription.hbs').then((source) =>
-    Handlebars.templates.dashboardsuscription = Handlebars.compile(source))
+    Handlebars.templates.dashboardsuscription = Handlebars.compile(source)),
+    loadTextFile('templates/components/register.hbs').then((source) =>
+    Handlebars.templates.register = Handlebars.compile(source))
     ])
   .then(() => {
     $(() => {

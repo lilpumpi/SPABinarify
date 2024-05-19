@@ -25,9 +25,9 @@
                 {{#if user.currentUser}}
 
                     {{#if selectedSwitch.subscribed}}
-                        <button type="submit" name="submit" class="btn-view-suscribe" id="btn-unsuscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Unsubscribe'}}</button>
+                        <button type="submit" name="submit" class="btn-view-suscribe" id="btn-view-unsuscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Unsubscribe'}}</button>
                     {{else}}
-                        <button type="submit" name="submit" class="btn-view-suscribe" id="btn-suscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Subscribe'}}</button>
+                        <button type="submit" name="submit" class="btn-view-suscribe" id="btn-view-suscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Subscribe'}}</button>
                     {{/if}}
                     
                 {{/if}}

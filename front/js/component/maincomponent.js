@@ -39,7 +39,11 @@ class MainComponent extends Fronty.RouterComponent {
         component: new LoginComponent(this.userModel, this),
         title: 'Login'
       },
-      defaultRoute: 'dashboard'
+      register: {
+        component: new RegisterComponent(this.userModel, this),
+        title: 'Login'
+      },
+      defaultRoute: 'login'
     });
 
     
