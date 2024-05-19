@@ -1,37 +1,16 @@
-mvcblog-front
-=============
-A "single-page" application for
-[mvcblog](https://github.com/lipido/mvcblog) based on
-[fronty.js](https://github.com/lipido/fronty.js),
-[jQuery.js](https://jquery.com/) and [Handlebars](http://handlebarsjs.com/), for
-educational purposes.
+SPA Binarify
+Creado por Samuel Pampillón Roa (21115573D)
 
-This front-end of [mvcblog](https://github.com/lipido/mvcblog) uses JavaScript
-and AJAX and interacts with the backend via its REST API.
+Este proyecto se ha realizado en un entorno Windows y se ha utilizado XAMPP para alojar la web, a continuacion, se detallan los pasos 
+que se deben seguir para el correcto funcionamiento del proyecto, en este caso desde XAMPP.
 
-## Architecture overview
+1. Para poder ejecutar correctamente el proyecto usando XAMPP, es necesario cargar la carpeta en el directorio xampp/htdocs
+2. Dentro del pryecto, en /sql/setup.sql se encuentra el codigo para crear e iniciar la base de datos, en este caso tanto MVCBinarify y SPABinarify usan la misma BD. Si queremos hacerlo desde XAMPP deberemos realizar los siguientes pasos:
 
-The base architecture is defined by
-[fronty.js](https://github.com/lipido/fronty.js).  In this sense, the main
-artifacts are:
+	2.1. Navegamos hasta la carpeta que contiene el archivo sql, en este caso "htdocs/SPABinarify/sql"
+	2.2. Entrar en la terminal SQL usando los comandos mysql -u root -p, nos pedirá la contraseña que será vacia
+	2.3. Una vez en la terminal SQL ejecutamos el comando source setup.sql, que ejecutará el codigo del archivo y creará la base de datos "binarify"
+	
+3. Una vez creada la base de datos debemos usarla con el comando "use binairfy;"
 
-- Models, which are JavaScript objects containing application state, like
-  `PostsModel` and `UserModel`.
-- Components, which are JavaScript objects in charge of rendering different
-  parts of the application.
-- Renderers in [Handlebars](http://handlebarsjs.com/) language containing the
-  HTML fragments separated from JavaScript.
-
-In addition, this application includes a library for Internationalization (I18n)
-in `js/i18n` folder.
-
-## Installation
-
-A quick installation process could be:
-
-1. Download and install [mvcblog](https://github.com/lipido/mvcblog), the
-   backend-app (you will need a PHP-enabled server and MySQL).
-2. Download
-[mvcblog-front](https://github.com/lipido/mvcblog-front/archive/master.zip) and copy
-it inside the backend app, for example in `/frontend`.
-3. Start your server and access it: http://localhost/mvcblog/frontend/index.html.
+4. Una vez configurada la base de datos ya podemos ejecutar el codigo en un navegador
