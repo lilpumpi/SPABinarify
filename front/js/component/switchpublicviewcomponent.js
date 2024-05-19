@@ -11,12 +11,12 @@ class SwitchPublicViewComponent extends Fronty.ModelComponent {
       this.suscriptionServices = new SuscriptionsService();
         
       // Event listener para encender el switch
-      this.addEventListener('click', '#btn-suscribe', (event) => {
+      this.addEventListener('click', '#btn-view-suscribe', (event) => {
         this.subscribeSwitch(event);
       });
   
       // Event listener para apagar el switch
-      this.addEventListener('click', '#btn-unsuscribe', (event) => {
+      this.addEventListener('click', '#btn-view-unsuscribe', (event) => {
         this.unsubscribeSwitch(event);
       });
   

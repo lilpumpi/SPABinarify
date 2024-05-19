@@ -17,7 +17,7 @@
               <p id="fecha" class="time">{{i18n 'Last Time'}}: {{selectedSwitch.last_time}}</p>
             {{/if}}
 
-            <p id="owner">{{i18n 'Created by '}}: {{selectedSwitch.owner}}</p>
+            <p id="owner">{{i18n 'Created by'}}: {{selectedSwitch.owner}}</p>
 
             <div id="boton">
 
@@ -25,9 +25,9 @@
                 {{#if user.currentUser}}
 
                     {{#if selectedSwitch.subscribed}}
-                        <button type="submit" name="submit" class="btn-view-suscribe" id="btn-unsuscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Unsubscribe'}}</button>
+                        <button type="submit" name="submit" class="btn-view-suscribe" id="btn-view-unsuscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Unsubscribe'}}</button>
                     {{else}}
-                        <button type="submit" name="submit" class="btn-view-suscribe" id="btn-suscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Subscribe'}}</button>
+                        <button type="submit" name="submit" class="btn-view-suscribe" id="btn-view-suscribe" item="{{selectedSwitch.public_id}}">{{i18n 'Subscribe'}}</button>
                     {{/if}}
                     
                 {{/if}}

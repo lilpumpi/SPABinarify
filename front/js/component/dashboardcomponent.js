@@ -83,7 +83,7 @@ class DashboardSwitchComponent extends Fronty.ModelComponent {
 
         // Event listener para encender el switch
         this.addEventListener('click', '#btn-encender', (event) => {
-            this.encenderSwitch(event);
+            this.showTimeModal(event);
         });
     
         // Event listener para apagar el switch
@@ -93,12 +93,34 @@ class DashboardSwitchComponent extends Fronty.ModelComponent {
 
     }
 
+
+    //Mostrar ventana modal para solicitar tiempo
+    showTimeModal(event) {
+        const modalHtml = Handlebars.templates.modal();
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+        const modal = document.getElementById('modal-container');
+        const closeModal = modal.querySelector('.close-button');
+        const saveButton = modal.querySelector('#saveTime');
+        
+        closeModal.addEventListener('click', () => {
+            modal.remove();
+        });
+
+        saveButton.addEventListener('click', () => {
+            const autoOffTime = parseInt(document.getElementById('autoOffTime').value);
+            this.encenderSwitch(event, autoOffTime);
+            modal.remove();
+        });
+
+        modal.style.display = "block";
+    }
+
     // Event listener para encender el switch
-    encenderSwitch(event) {
+    encenderSwitch(event, timeOff) {
         //La petición REST para actualizar un switch solo necesita el tiempo y la fecha
         var newSwitch = {};
         newSwitch.private_id = event.target.getAttribute('item');
-        newSwitch.auto_off_time = 10;
+        newSwitch.auto_off_time = timeOff;
         newSwitch.last_time = this.getFechaHoraActual();
 
         //Enviamos petición REST a update a través de SwitchService
@@ -154,4 +176,5 @@ class DashboardSuscriptionComponent extends Fronty.ModelComponent {
         this.router = router;
     }
 }
+
   
