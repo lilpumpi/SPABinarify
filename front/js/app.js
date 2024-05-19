@@ -54,7 +54,9 @@ Promise.all([
     loadTextFile('templates/components/dashboard-suscription.hbs').then((source) =>
     Handlebars.templates.dashboardsuscription = Handlebars.compile(source)),
     loadTextFile('templates/components/register.hbs').then((source) =>
-    Handlebars.templates.register = Handlebars.compile(source))
+    Handlebars.templates.register = Handlebars.compile(source)),
+    loadTextFile('templates/components/modal.hbs').then((source) =>
+    Handlebars.templates.modal = Handlebars.compile(source))
     ])
   .then(() => {
     $(() => {

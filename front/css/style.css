@@ -820,6 +820,10 @@ textarea:hover{
 
 
 
+
+
+
+
 /* Estilos para la modal */
 .modal {
     position: fixed;
@@ -860,13 +864,13 @@ textarea:hover{
     color: #ccc;
 }
 
-label {
-    display: block;
+#time-label {
     margin-bottom: 10px;
     color: #333;
 }
 
-input[id="timeModal"] {
+
+#autoOffTime {
     width: calc(100% - 20px);
     padding: 8px;
     border-radius: 5px;
@@ -874,13 +878,17 @@ input[id="timeModal"] {
     margin-bottom: 10px;
 }
 
-.modal-body button {
+#saveTime {
     background-color: #2196F3;
     color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+#saveTime:hover {
+    background-color: #0e83cd;
 }
 
 /* Icons */
